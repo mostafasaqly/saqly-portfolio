@@ -1,0 +1,105 @@
+<app-section-container sectionId="projects">
+  <section class="projects" [attr.dir]="dir()">
+    <app-section-heading
+      eyebrow="projects.eyebrow"
+      title="projects.title"
+      description="projects.description"
+    />
+
+    <div class="projects__grid">
+      @for (project of paginatedProjects(); track project.id) {
+        <article class="project-card" appTiltCard [tiltStrength]="3">
+          <div class="project-card__top">
+            <div class="project-card__meta">
+              <span class="project-card__badge">{{ project.category | t }}</span>
+
+              <div class="project-card__signals">
+                @if (hasGithubLink(project)) {
+                  <span class="project-card__signal project-card__signal--github">
+                    {{ 'projects.githubAvailable' | t }}
+                  </span>
+                }
+
+                @if (hasVideoLink(project)) {
+                  <span class="project-card__signal project-card__signal--video">
+                    {{ 'projects.videoAvailable' | t }}
+                  </span>
+                }
+              </div>
+            </div>
+
+            <h3 class="project-card__title">{{ project.title | t }}</h3>
+            <p class="project-card__description">{{ project.description | t }}</p>
+          </div>
+
+          <div class="project-card__stack">
+            @for (item of project.stack; track item) {
+              <span class="project-chip">{{ item }}</span>
+            }
+          </div>
+
+          <ul class="project-card__highlights">
+            @for (item of project.highlights; track item) {
+              <li class="project-card__highlight">
+                <span class="project-card__highlight-icon">✓</span>
+                <span>{{ item | t }}</span>
+              </li>
+            }
+          </ul>
+
+          <div class="project-card__actions">
+            @for (link of project.links; track link.url) {
+              <a
+                class="project-btn"
+                [class.project-btn--primary]="link.url.includes('github.com')"
+                [class.project-btn--secondary]="
+                  link.url.includes('youtu.be') || link.url.includes('youtube.com')
+                "
+                [href]="link.url"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {{ link.label | t }}
+              </a>
+            }
+          </div>
+        </article>
+      }
+    </div>
+
+    @if (totalPages() > 1) {
+      <div class="projects__pagination">
+        <button
+          class="projects__page-btn"
+          type="button"
+          (click)="goToPreviousPage()"
+          [disabled]="currentPage() === 1"
+        >
+          {{ 'projects.pagination.previous' | t }}
+        </button>
+
+        <div class="projects__page-numbers">
+          @for (page of pages(); track page) {
+            <button
+              class="projects__page-number"
+              type="button"
+              [class.projects__page-number--active]="currentPage() === page"
+              (click)="goToPage(page)"
+            >
+              {{ page }}
+            </button>
+          }
+        </div>
+
+        <button
+          class="projects__page-btn"
+          type="button"
+          (click)="goToNextPage()"
+          [disabled]="currentPage() === totalPages()"
+        >
+          {{ 'projects.pagination.next' | t }}
+        </button>
+      </div>
+    }
+  </section>
+</app-section-container>

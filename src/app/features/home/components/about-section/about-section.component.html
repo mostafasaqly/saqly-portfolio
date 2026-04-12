@@ -1,0 +1,35 @@
+<app-section-container sectionId="about">
+  <section class="about" [attr.dir]="dir()">
+    <app-section-heading
+      eyebrow="about.eyebrow"
+      title="about.title"
+      description="about.description"
+    />
+
+    <div class="about__grid">
+      <article class="about__summary-card">
+        <h3 class="about__card-title">{{ 'about.summary.title' | t }}</h3>
+        <p class="about__card-text">{{ 'about.summary.p1' | t }}</p>
+        <p class="about__card-text">{{ 'about.summary.p2' | t }}</p>
+
+        <ul class="about__achievement-list">
+          @for (item of achievements(); track item) {
+            <li class="about__achievement-item">
+              <span class="about__achievement-icon">✓</span>
+              <span>{{ item | t }}</span>
+            </li>
+          }
+        </ul>
+      </article>
+
+      <div class="about__values-grid">
+        @for (value of values(); track value.title) {
+          <article class="about-value-card">
+            <h3 class="about-value-card__title">{{ value.title | t }}</h3>
+            <p class="about-value-card__description">{{ value.description | t }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+</app-section-container>

@@ -1,0 +1,73 @@
+<header class="navbar" [attr.dir]="currentDir()">
+  <div class="container navbar__inner">
+    <a class="navbar__brand" href="#home" (click)="closeMenu()">
+      <span class="navbar__logo">MS</span>
+      <span class="navbar__name">Mostafa Saqly</span>
+    </a>
+
+    <button
+      class="navbar__menu-toggle"
+      type="button"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="isMenuOpen()"
+      aria-label="Toggle navigation"
+      aria-controls="mobile-navigation"
+    >
+      ☰
+    </button>
+
+    <nav class="navbar__nav navbar__nav--desktop" aria-label="Primary navigation">
+      @for (link of navLinks(); track link.href) {
+        <a
+          class="navbar__link"
+          [class.navbar__link--active]="isActive(link.id)"
+          [href]="link.href"
+          [attr.aria-current]="isActive(link.id) ? 'page' : null"
+        >
+          {{ link.label | t }}
+        </a>
+      }
+    </nav>
+
+    <div class="navbar__actions navbar__actions--desktop">
+      <button class="navbar__action" type="button" (click)="toggleLanguage()">
+        {{ currentLanguage() === 'en' ? 'AR' : 'EN' }}
+      </button>
+
+      <button class="navbar__action" type="button" (click)="toggleTheme()">
+        {{ isDark() ? ('theme.light' | t) : ('theme.dark' | t) }}
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-navigation"
+    class="navbar__mobile-panel"
+    [class.navbar__mobile-panel--open]="isMenuOpen()"
+  >
+    <div class="container navbar__mobile-content">
+      <nav class="navbar__mobile-nav" aria-label="Mobile navigation">
+        @for (link of navLinks(); track link.href) {
+          <a
+            class="navbar__mobile-link"
+            [class.navbar__mobile-link--active]="isActive(link.id)"
+            [href]="link.href"
+            (click)="closeMenu()"
+          >
+            {{ link.label | t }}
+          </a>
+        }
+      </nav>
+
+      <div class="navbar__mobile-actions">
+        <button class="navbar__action" type="button" (click)="toggleLanguage()">
+          {{ currentLanguage() === 'en' ? 'AR' : 'EN' }}
+        </button>
+
+        <button class="navbar__action" type="button" (click)="toggleTheme()">
+          {{ isDark() ? ('theme.light' | t) : ('theme.dark' | t) }}
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

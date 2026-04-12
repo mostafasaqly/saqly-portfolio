@@ -1,0 +1,40 @@
+<app-section-container sectionId="services">
+  <section class="services" [attr.dir]="dir()">
+    <app-section-heading
+      eyebrow="services.eyebrow"
+      title="services.title"
+      description="services.description"
+      align="center"
+    />
+
+    <div class="services__grid">
+      @for (service of services(); track service.id) {
+        <article class="service-card">
+          <div class="service-card__icon" aria-hidden="true">
+            {{ service.iconText }}
+          </div>
+
+          <div class="service-card__content">
+            <h3 class="service-card__title">{{ service.title | t }}</h3>
+            <p class="service-card__description">{{ service.description | t }}</p>
+
+            <ul class="service-card__bullets">
+              @for (item of service.bullets; track item) {
+                <li class="service-card__bullet">
+                  <span class="service-card__bullet-icon">✓</span>
+                  <span>{{ item | t }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+
+          <div class="service-card__actions">
+            <a class="service-btn" [href]="service.ctaHref">
+              {{ service.ctaLabel | t }}
+            </a>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+</app-section-container>

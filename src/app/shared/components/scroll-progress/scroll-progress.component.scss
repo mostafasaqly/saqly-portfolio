@@ -1,0 +1,16 @@
+.scroll-progress {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 1200;
+  height: 3px;
+  pointer-events: none;
+}
+
+.scroll-progress__bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--color-primary), #8b5cf6);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--color-primary) 40%, transparent);
+  transition: width 0.1s linear;
+}

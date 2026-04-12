@@ -1,1 +1,101 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'styles/variables';
+@use 'styles/themes';
+@use 'styles/reset';
+@use 'styles/utilities';
+
+/* ✅ Scrollbar (Global - Themed) */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px; /* مهم للـ horizontal */
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 999px;
+  border: 2px solid var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* =============================== */
+
+body {
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+html[dir='rtl'] body {
+  font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
+}
+
+html[dir='ltr'] body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Arial, sans-serif;
+}
+
+a,
+button,
+input,
+textarea,
+select {
+  &:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--color-primary) 35%, white);
+    outline-offset: 3px;
+  }
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-primary) 25%, white);
+  color: var(--color-text);
+}
+
+.reveal-init {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-init,
+  .reveal-visible {
+    opacity: 1;
+    transform: none;
+  }
+}

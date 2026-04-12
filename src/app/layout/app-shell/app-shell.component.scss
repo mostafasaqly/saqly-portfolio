@@ -1,0 +1,15 @@
+.app-shell {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.app-shell__content {
+  flex: 1;
+}
+.scroll-container {
+  height: 100vh;
+  overflow-y: auto;
+}

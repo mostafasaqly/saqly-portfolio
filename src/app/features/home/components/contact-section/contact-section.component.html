@@ -1,0 +1,238 @@
+<app-section-container sectionId="contact">
+  <section class="contact" [attr.dir]="dir()">
+    <div class="contact__layout">
+      <div class="contact__content">
+        <app-section-heading
+          eyebrow="contact.eyebrow"
+          title="contact.title"
+          description="contact.description"
+        />
+
+        <div class="contact-info-card">
+          <h3 class="contact-info-card__title">
+            {{ 'contact.info.title' | t }}
+          </h3>
+          <p class="contact-info-card__text">
+            {{ 'contact.info.description' | t }}
+          </p>
+
+          <div class="contact-info-card__list">
+            @for (item of contactInfo(); track item.label) {
+              <div class="contact-info-item">
+                <span class="contact-info-item__label">
+                  {{ item.label | t }}
+                </span>
+                <span class="contact-info-item__value">
+                  {{ item.value | t }}
+                </span>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="contact__form-wrapper">
+        <form
+          class="contact-form"
+          [formGroup]="form"
+          (ngSubmit)="onSubmit()"
+          novalidate
+        >
+          <div class="contact-form__grid">
+            <div class="form-field">
+              <label class="form-field__label" for="name">
+                {{ 'contact.form.name' | t }}
+              </label>
+
+              <input
+                id="name"
+                class="form-field__control"
+                type="text"
+                formControlName="name"
+                [attr.placeholder]="'contact.form.name.placeholder' | t"
+                [attr.aria-invalid]="hasError(nameControl)"
+                aria-describedby="name-error"
+              />
+
+              @if (hasError(nameControl)) {
+                <p id="name-error" class="form-field__error">
+                  @if (nameControl.errors?.['required']) {
+                    {{ 'contact.validation.name.required' | t }}
+                  } @else if (nameControl.errors?.['minlength']) {
+                    {{ 'contact.validation.name.minlength' | t }}
+                  } @else if (nameControl.errors?.['maxlength']) {
+                    {{ 'contact.validation.name.maxlength' | t }}
+                  }
+                </p>
+              }
+            </div>
+
+            <div class="form-field">
+              <label class="form-field__label" for="email">
+                {{ 'contact.form.email' | t }}
+              </label>
+
+              <input
+                id="email"
+                class="form-field__control"
+                type="email"
+                formControlName="email"
+                [attr.placeholder]="'contact.form.email.placeholder' | t"
+                [attr.aria-invalid]="hasError(emailControl)"
+                aria-describedby="email-error"
+              />
+
+              @if (hasError(emailControl)) {
+                <p id="email-error" class="form-field__error">
+                  @if (emailControl.errors?.['required']) {
+                    {{ 'contact.validation.email.required' | t }}
+                  } @else if (emailControl.errors?.['email']) {
+                    {{ 'contact.validation.email.invalid' | t }}
+                  } @else if (emailControl.errors?.['maxlength']) {
+                    {{ 'contact.validation.email.maxlength' | t }}
+                  }
+                </p>
+              }
+            </div>
+
+            <div class="form-field">
+              <label class="form-field__label" for="phone">
+                {{ 'contact.form.phone' | t }}
+              </label>
+
+              <input
+                id="phone"
+                class="form-field__control"
+                type="tel"
+                formControlName="phone"
+                [attr.placeholder]="'contact.form.phone.placeholder' | t"
+                [attr.aria-invalid]="hasError(phoneControl)"
+                aria-describedby="phone-error"
+              />
+
+              @if (hasError(phoneControl)) {
+                <p id="phone-error" class="form-field__error">
+                  @if (phoneControl.errors?.['required']) {
+                    {{ 'contact.validation.phone.required' | t }}
+                  } @else if (phoneControl.errors?.['pattern']) {
+                    {{ 'contact.validation.phone.pattern' | t }}
+                  } @else if (phoneControl.errors?.['minlength']) {
+                    {{ 'contact.validation.phone.minlength' | t }}
+                  } @else if (phoneControl.errors?.['maxlength']) {
+                    {{ 'contact.validation.phone.maxlength' | t }}
+                  }
+                </p>
+              }
+            </div>
+
+            <div class="form-field">
+              <label class="form-field__label" for="service">
+                {{ 'contact.form.service' | t }}
+              </label>
+
+              <select
+                id="service"
+                class="form-field__control form-field__control--select"
+                formControlName="service"
+                [attr.aria-invalid]="hasError(serviceControl)"
+                aria-describedby="service-error"
+              >
+                <option value="">
+                  {{ 'contact.form.service.placeholder' | t }}
+                </option>
+
+                @for (service of availableServices(); track service.value) {
+                  <option [value]="service.value">
+                    {{ service.label | t }}
+                  </option>
+                }
+              </select>
+
+              @if (hasError(serviceControl)) {
+                <p id="service-error" class="form-field__error">
+                  {{ 'contact.validation.service.required' | t }}
+                </p>
+              }
+            </div>
+          </div>
+
+          <div class="form-field form-field--message">
+            <label class="form-field__label" for="message">
+              {{ 'contact.form.message' | t }}
+            </label>
+
+            <textarea
+              id="message"
+              class="form-field__control form-field__control--textarea"
+              formControlName="message"
+              [attr.placeholder]="'contact.form.message.placeholder' | t"
+              rows="6"
+              [attr.aria-invalid]="hasError(messageControl)"
+              aria-describedby="message-error"
+            ></textarea>
+
+            <div class="form-field__meta">
+              <span class="form-field__hint">
+                {{ 'contact.form.message.hint' | t }}
+              </span>
+
+              <span class="form-field__count">
+                {{ messageControl.value.length }} / 1200
+              </span>
+            </div>
+
+            @if (hasError(messageControl)) {
+              <p id="message-error" class="form-field__error">
+                @if (messageControl.errors?.['required']) {
+                  {{ 'contact.validation.message.required' | t }}
+                } @else if (messageControl.errors?.['minlength']) {
+                  {{ 'contact.validation.message.minlength' | t }}
+                } @else if (messageControl.errors?.['maxlength']) {
+                  {{ 'contact.validation.message.maxlength' | t }}
+                }
+              </p>
+            }
+          </div>
+
+          @if (showGlobalError()) {
+            <div
+              class="form-status form-status--error"
+              role="alert"
+              aria-live="assertive"
+            >
+              @if (serverErrorText()) {
+                {{ serverErrorText() }}
+              } @else if (serverMessageKey()) {
+                {{ serverMessageKey()! | t }}
+              }
+            </div>
+          }
+
+          @if (submissionState() === 'success' && serverMessageKey()) {
+            <div
+              class="form-status form-status--success"
+              role="status"
+              aria-live="polite"
+            >
+              {{ serverMessageKey()! | t }}
+            </div>
+          }
+
+          <div class="contact-form__actions">
+            <button
+              class="contact-form__submit"
+              type="submit"
+              [disabled]="submissionState() === 'submitting'"
+            >
+              @if (submissionState() === 'submitting') {
+                {{ 'contact.form.submitting' | t }}
+              } @else {
+                {{ 'contact.form.submit' | t }}
+              }
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</app-section-container>

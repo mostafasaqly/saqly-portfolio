@@ -1,0 +1,161 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navbar__inner {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.navbar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.navbar__logo {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.navbar__name {
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.navbar__menu-toggle {
+  border: 1px solid var(--color-border);
+  background: var(--color-card);
+  color: var(--color-text);
+  padding: 0.6rem 0.9rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.navbar__nav--desktop,
+.navbar__actions--desktop {
+  display: none;
+}
+
+.navbar__link {
+  position: relative;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--color-text);
+}
+
+.navbar__link--active::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: -0.5rem;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--color-primary);
+}
+
+.navbar__actions,
+.navbar__mobile-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.navbar__action {
+  border: 1px solid var(--color-border);
+  background: var(--color-card);
+  color: var(--color-text);
+  padding: 0.625rem 0.9rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font: inherit;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.navbar__action:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-primary);
+}
+
+.navbar__mobile-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
+  border-top: 1px solid transparent;
+}
+
+.navbar__mobile-panel--open {
+  grid-template-rows: 1fr;
+  border-top-color: var(--color-border);
+}
+
+.navbar__mobile-content {
+  overflow: hidden;
+  padding-block: 0;
+}
+
+.navbar__mobile-panel--open .navbar__mobile-content {
+  padding-block: 1rem 1.25rem;
+}
+
+.navbar__mobile-nav {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.navbar__mobile-link {
+  text-decoration: none;
+  color: var(--color-text);
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  font-weight: 600;
+}
+
+.navbar__mobile-link--active {
+  border-color: var(--color-primary);
+  background: var(--color-primary-soft);
+}
+
+@media (min-width: 992px) {
+  .navbar__menu-toggle,
+  .navbar__mobile-panel {
+    display: none;
+  }
+
+  .navbar__nav--desktop {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .navbar__actions--desktop {
+    display: flex;
+  }
+}

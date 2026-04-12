@@ -1,0 +1,33 @@
+<app-section-container sectionId="tech-stack">
+  <section class="tech-stack" [attr.dir]="dir()">
+    <app-section-heading
+      eyebrow="tech.eyebrow"
+      title="tech.title"
+      description="tech.description"
+      align="center"
+    />
+
+    <div class="tech-stack__stats">
+      @for (stat of quickStats(); track stat.label) {
+        <article class="tech-stat-card">
+          <h3 class="tech-stat-card__value">{{ stat.value }}</h3>
+          <p class="tech-stat-card__label">{{ stat.label | t }}</p>
+        </article>
+      }
+    </div>
+
+    <div class="tech-stack__grid">
+      @for (category of techCategories(); track category.title) {
+        <article class="tech-category-card">
+          <h3 class="tech-category-card__title">{{ category.title | t }}</h3>
+
+          <div class="tech-category-card__chips">
+            @for (item of category.items; track item) {
+              <span class="tech-chip">{{ item }}</span>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+</app-section-container>

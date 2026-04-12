@@ -1,0 +1,131 @@
+<app-section-container sectionId="home">
+  <section class="hero" [attr.dir]="currentDir()">
+    <div class="hero__grid">
+      <div class="hero__content">
+        <div class="hero__badge">
+          <span class="hero__badge-dot"></span>
+          {{ 'hero.badge' | t }}
+        </div>
+
+        <h1 class="hero__title">
+          <span class="hero__line">
+            {{ 'hero.title.line1' | t }}
+          </span>
+
+          <span class="hero__line hero__title-accent">
+            {{ 'hero.title.line2' | t }}
+          </span>
+        </h1>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#contact">
+            {{ 'hero.cta.contact' | t }}
+          </a>
+
+          <a class="btn btn--secondary" href="#projects">
+            {{ 'hero.cta.projects' | t }}
+          </a>
+        </div>
+
+        <ul class="hero__highlights">
+          @for (item of highlights(); track item) {
+            <li class="hero__highlight-item">
+              <span class="hero__highlight-icon">✓</span>
+              <span>{{ item | t }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="hero__visual">
+        <div class="hero-card hero-card--main">
+          <div class="hero-card__header">
+            <span class="hero-card__dot"></span>
+            <span class="hero-card__dot"></span>
+            <span class="hero-card__dot"></span>
+
+            <span class="hero-card__label">
+              {{ 'hero.code.windowTitle' | t }}
+            </span>
+          </div>
+
+          <div class="hero-card__body">
+            <div class="hero-avatar" aria-hidden="true">
+              <img
+                src="assets/images/profile/mostafa-saqly.jpg"
+                alt="Mostafa Saqly"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="code-block" aria-label="Engineer profile code snippet">
+              <span class="code-line" style="--line-index: 0">
+                <span class="code-keyword">const</span>
+                <span class="code-var"> engineer </span>
+                <span class="code-operator">=</span>
+                <span class="code-bracket">&#123;</span>
+              </span>
+
+              <span class="code-line" style="--line-index: 1">
+                <span class="code-indent"></span>
+                <span class="code-prop">name:</span>
+                <span class="code-quote">'</span>
+                <bdi class="code-string-value">{{ 'hero.code.name' | t }}</bdi>
+                <span class="code-quote">',</span>
+              </span>
+
+              <span class="code-line" style="--line-index: 2">
+                <span class="code-indent"></span>
+                <span class="code-prop">role:</span>
+                <span class="code-quote">'</span>
+                <bdi class="code-string-value">{{ 'hero.code.role' | t }}</bdi>
+                <span class="code-quote">',</span>
+              </span>
+
+              <span class="code-line" style="--line-index: 3">
+                <span class="code-indent"></span>
+                <span class="code-prop">focus:</span>
+                <span class="code-quote">'</span>
+                <bdi class="code-string-value">{{ 'hero.code.focus' | t }}</bdi>
+                <span class="code-quote">',</span>
+              </span>
+
+              <span class="code-line" style="--line-index: 4">
+                <span class="code-indent"></span>
+                <span class="code-prop">workExperience:</span>
+                <span class="code-quote">'</span>
+                <bdi class="code-string-value">{{ 'hero.code.workExperience' | t }}</bdi>
+                <span class="code-quote">',</span>
+              </span>
+
+              <span class="code-line" style="--line-index: 5">
+                <span class="code-indent"></span>
+                <span class="code-prop">expertise:</span>
+                <span class="code-quote">'</span>
+                <bdi class="code-string-value">
+                  {{ 'hero.code.expertise' | t }}
+                </bdi>
+                <span class="code-quote">',</span>
+              </span>
+
+              <span class="code-line" style="--line-index: 6">
+                <span class="code-indent"></span>
+                <span class="code-prop">architecture:</span>
+                <span class="code-quote">'</span>
+                <bdi class="code-string-value">
+                  {{ 'hero.code.architecture' | t }}
+                </bdi>
+                <span class="code-quote">',</span>
+              </span>
+
+              <span class="code-line" style="--line-index: 6">
+                <span class="code-bracket">&#125;</span>
+                <span class="code-operator">;</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</app-section-container>
