@@ -236,7 +236,7 @@
 
   "courses.eyebrow": "تدريب الشركات",
   "courses.hero.title": "تدريب تقني احترافي باللغة العربية لمؤسستك",
-  "courses.hero.subtitle": "10 كورسات احترافية، أكثر من 140 ساعة محتوى، 10,000 مقعد تسجيل لفريقك — يُسلَّم خلال 5 أيام من توقيع الاتفاقية. محتوى عربي كامل مصمم خصيصاً للمتعلمين العرب.",
+  "courses.hero.subtitle": "9 كورسات احترافية، أكثر من 140 ساعة محتوى، 9,000 مقعد تسجيل لفريقك — يُسلَّم خلال 5 أيام من توقيع الاتفاقية. محتوى عربي كامل مصمم خصيصاً للمتعلمين العرب.",
   "courses.stats.courses": "كورسات",
   "courses.stats.hours": "ساعة محتوى",
   "courses.stats.seats": "إجمالي المقاعد",
@@ -257,8 +257,8 @@
   "courses.packages.frontend.name": "مسار الواجهات الأمامية",
   "courses.packages.ai.name": "مسار الذكاء الاصطناعي والأتمتة",
   "courses.packages.content.name": "مسار إنشاء المحتوى",
-  "courses.packages.bundle.name": "الباقة الكاملة — جميع الكورسات العشرة",
-  "courses.packages.bundle.valueNote": "أقل من $0.3 لكل متعلم للحصول على تدريب تقني عالمي المستوى.",
+  "courses.packages.bundle.name": "الباقة الكاملة — جميع الكورسات التسع",
+  "courses.packages.bundle.valueNote": "أقل من $0.33 لكل متعلم للحصول على تدريب تقني عالمي المستوى.",
 
   "courses.why.title": "لماذا هذا يناسب مؤسستك",
   "courses.why.certificate.title": "شهادات دولية معتمدة",

@@ -107,7 +107,7 @@ export class CoursesPageComponent {
     {
       id: 'bundle',
       trackKey: 'courses.packages.bundle',
-      seats: 10000,
+      seats: 9000,
       price: 3000,
       featured: true,
       courses: [
