@@ -41,6 +41,9 @@ jobs:
       - name: Add .nojekyll
         run: touch dist/personal-portfolio/browser/.nojekyll
 
+      - name: Add 404.html for SPA routing
+        run: cp dist/personal-portfolio/browser/index.html dist/personal-portfolio/browser/404.html
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
