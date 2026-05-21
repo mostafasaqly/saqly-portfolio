@@ -3,6 +3,7 @@
   "nav.about": "عني",
   "nav.tech": "التقنيات",
   "nav.projects": "المشاريع",
+  "nav.opensource": "مفتوح المصدر",
   "nav.services": "الخدمات",
   "nav.contact": "تواصل",
   "nav.courses": "تدريب الشركات",
@@ -134,6 +135,18 @@
 "projects.pagination.previous": "السابق",
 "projects.pagination.next": "التالي",
 
+
+  "opensource.eyebrow": "مفتوح المصدر",
+  "opensource.title": "باقات npm وإضافة VS Code",
+  "opensource.description": "باقات Angular وأدوات مطورين نشرتها للمجتمع ومتاحة للاستخدام المجاني.",
+
+  "opensource.actions.viewOnNpm": "عرض على npm",
+  "opensource.actions.viewOnMarketplace": "عرض على Marketplace",
+
+  "opensource.items.login.desc": "مكوّن Angular جاهز لواجهة تسجيل الدخول مع التحقق من المدخلات وتصميم نظيف وسهولة الدمج. أضفه في أي مشروع Angular وربطه بنظام المصادقة الخاص بك.",
+  "opensource.items.workBalance.desc": "مكوّن Angular يساعد المطورين والفرق على تصور وتتبع مؤشرات التوازن بين العمل والحياة. قابل للتخصيص وسهل التضمين في لوحات الإنتاجية.",
+  "opensource.items.supabase.desc": "غلاف خدمة Angular لـ Supabase — يبسّط المصادقة واستعلامات قاعدة البيانات والاشتراكات اللحظية بواجهة برمجية نظيفة ومكتوبة بشكل صارم.",
+  "opensource.items.arabDevSnippets.desc": "إضافة VS Code توفر مقتطفات كود صديقة للغة العربية لـ Angular وTypeScript وتطوير الواجهات. مبنية للمطورين العرب الذين يفضلون قراءة التلميحات بلغتهم الأم.",
 
   "services.eyebrow": "الخدمات",
   "services.title": "خدمات تساعد المؤسسين والفرق والأفراد على بناء منتجات Angular أفضل",

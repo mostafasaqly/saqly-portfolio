@@ -1,0 +1,53 @@
+<app-section-container sectionId="opensource">
+  <section class="opensource" [attr.dir]="dir()">
+    <app-section-heading
+      eyebrow="opensource.eyebrow"
+      title="opensource.title"
+      description="opensource.description"
+    />
+
+    <div class="opensource__grid">
+      @for (item of items; track item.id) {
+        <article class="os-card">
+          <div class="os-card__top">
+            <div class="os-card__meta">
+              <span
+                class="os-card__badge"
+                [class.os-card__badge--npm]="item.badge === 'npm'"
+                [class.os-card__badge--vscode]="item.badge === 'vscode'"
+              >
+                {{ item.badgeLabel }}
+              </span>
+            </div>
+
+            <h3 class="os-card__name">{{ item.name }}</h3>
+            <p class="os-card__desc">{{ item.descKey | t }}</p>
+          </div>
+
+          <div class="os-card__chips">
+            @for (chip of item.chips; track chip) {
+              <span class="os-chip">{{ chip }}</span>
+            }
+          </div>
+
+          <div class="os-card__actions">
+            <a
+              class="os-btn"
+              [class.os-btn--npm]="item.badge === 'npm'"
+              [class.os-btn--vscode]="item.badge === 'vscode'"
+              [href]="item.url"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @if (item.badge === 'npm') {
+                {{ 'opensource.actions.viewOnNpm' | t }}
+              } @else {
+                {{ 'opensource.actions.viewOnMarketplace' | t }}
+              }
+            </a>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+</app-section-container>

@@ -1,0 +1,191 @@
+:host {
+  display: block;
+}
+
+.opensource {
+  padding-block: 1rem;
+}
+
+.opensource__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1100px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// ── Card ───────────────────────────────────────────────────
+.os-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: 1.5rem;
+  border-radius: 24px;
+  border: 1px solid var(--color-border);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-card) 92%, white 8%),
+    var(--color-card)
+  );
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+// npm card accent
+.os-card:has(.os-card__badge--npm) {
+  &:hover {
+    border-color: color-mix(in srgb, #cc3534 35%, var(--color-border));
+  }
+}
+
+// vscode card accent
+.os-card:has(.os-card__badge--vscode) {
+  &:hover {
+    border-color: color-mix(in srgb, #007acc 35%, var(--color-border));
+  }
+}
+
+.os-card__top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex-grow: 1;
+}
+
+.os-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+// ── Badge ──────────────────────────────────────────────────
+.os-card__badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.os-card__badge--npm {
+  background: color-mix(in srgb, #cc3534 12%, transparent);
+  color: #cc3534;
+  border: 1px solid color-mix(in srgb, #cc3534 22%, var(--color-border));
+}
+
+.os-card__badge--vscode {
+  background: color-mix(in srgb, #007acc 12%, transparent);
+  color: #007acc;
+  border: 1px solid color-mix(in srgb, #007acc 22%, var(--color-border));
+}
+
+// ── Content ────────────────────────────────────────────────
+.os-card__name {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.os-card__desc {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+}
+
+// ── Chips ──────────────────────────────────────────────────
+.os-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.os-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 80%, transparent);
+  color: var(--color-text);
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+// ── CTA Button ─────────────────────────────────────────────
+.os-card__actions {
+  margin-top: auto;
+}
+
+.os-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition:
+    transform var(--transition-base),
+    background-color var(--transition-base),
+    border-color var(--transition-base);
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.os-btn--npm {
+  background: color-mix(in srgb, #cc3534 10%, transparent);
+  color: #cc3534;
+  border: 1px solid color-mix(in srgb, #cc3534 25%, var(--color-border));
+
+  &:hover {
+    background: color-mix(in srgb, #cc3534 16%, transparent);
+    border-color: #cc3534;
+  }
+}
+
+.os-btn--vscode {
+  background: color-mix(in srgb, #007acc 10%, transparent);
+  color: #007acc;
+  border: 1px solid color-mix(in srgb, #007acc 25%, var(--color-border));
+
+  &:hover {
+    background: color-mix(in srgb, #007acc 16%, transparent);
+    border-color: #007acc;
+  }
+}
+
+// ── RTL ────────────────────────────────────────────────────
+:host-context(html[dir='rtl']) {
+  .os-card {
+    text-align: right;
+  }
+}

@@ -3,6 +3,7 @@
   "nav.about": "About",
   "nav.tech": "Tech Stack",
   "nav.projects": "Projects",
+  "nav.opensource": "Open Source",
   "nav.services": "Services",
   "nav.contact": "Contact",
   "nav.courses": "Corporate Training",
@@ -133,6 +134,18 @@
 
 "projects.pagination.previous": "Previous",
 "projects.pagination.next": "Next",
+
+  "opensource.eyebrow": "Open Source",
+  "opensource.title": "npm Packages & VS Code Extension",
+  "opensource.description": "Reusable Angular packages and developer tools I published for the community.",
+
+  "opensource.actions.viewOnNpm": "View on npm",
+  "opensource.actions.viewOnMarketplace": "View on Marketplace",
+
+  "opensource.items.login.desc": "A ready-to-use Angular login UI component with form validation, clean design, and easy integration. Drop it into any Angular project and configure it to your auth flow.",
+  "opensource.items.workBalance.desc": "An Angular component that helps developers and teams visualize and track work-life balance metrics. Configurable and easy to embed in productivity dashboards.",
+  "opensource.items.supabase.desc": "An Angular service wrapper for Supabase — simplifies auth, database queries, and real-time subscriptions with a clean and typed API surface.",
+  "opensource.items.arabDevSnippets.desc": "A VS Code extension providing Arabic-friendly code snippets for Angular, TypeScript, and frontend development. Built for Arab developers who prefer reading hints in their native language.",
 
   "services.eyebrow": "Services",
   "services.title": "Services designed to help founders, teams, and individuals ship better Angular products",

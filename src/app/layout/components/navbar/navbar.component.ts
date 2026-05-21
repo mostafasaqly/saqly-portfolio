@@ -37,6 +37,7 @@ export class NavbarComponent implements AfterViewInit {
     { label: 'nav.about', href: '#about', id: 'about' },
     { label: 'nav.tech', href: '#tech-stack', id: 'tech-stack' },
     { label: 'nav.projects', href: '#projects', id: 'projects' },
+    { label: 'nav.opensource', href: '#opensource', id: 'opensource' },
     { label: 'nav.services', href: '#services', id: 'services' },
     { label: 'nav.contact', href: '#contact', id: 'contact' },
   ]);
