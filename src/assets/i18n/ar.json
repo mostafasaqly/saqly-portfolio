@@ -5,6 +5,7 @@
   "nav.projects": "المشاريع",
   "nav.services": "الخدمات",
   "nav.contact": "تواصل",
+  "nav.courses": "تدريب الشركات",
 
   "theme.light": "فاتح",
   "theme.dark": "داكن",
@@ -218,5 +219,45 @@
   "contact.status.serverError": "حدث خطأ في الخادم. حاول مرة أخرى بعد قليل.",
   "contact.status.requestError": "فشل إرسال الطلب. يرجى مراجعة البيانات والمحاولة مرة أخرى.",
   "contact.status.timeout": "استغرق الطلب وقتًا أطول من المتوقع. حاول مرة أخرى.",
-  "contact.status.unknownError": "حدث خطأ غير متوقع. حاول مرة أخرى."
+  "contact.status.unknownError": "حدث خطأ غير متوقع. حاول مرة أخرى.",
+
+  "courses.eyebrow": "تدريب الشركات",
+  "courses.hero.title": "تدريب تقني احترافي باللغة العربية لمؤسستك",
+  "courses.hero.subtitle": "10 كورسات احترافية، أكثر من 140 ساعة محتوى، 10,000 مقعد تسجيل لفريقك — يُسلَّم خلال 5 أيام من توقيع الاتفاقية. محتوى عربي كامل مصمم خصيصاً للمتعلمين العرب.",
+  "courses.stats.courses": "كورسات",
+  "courses.stats.hours": "ساعة محتوى",
+  "courses.stats.seats": "إجمالي المقاعد",
+  "courses.stats.days": "أيام تسليم",
+  "courses.cta.schedule": "احجز مكالمة 15 دقيقة",
+  "courses.cta.email": "أرسل بريدًا إلكترونيًا",
+  "courses.notice": "تنبيه مهم: كل دفعة كوبونات صالحة لمدة 5 أيام فقط من تاريخ التسليم. بعد انتهاء الصلاحية لا يمكن إعادة تفعيل الكوبونات. المقاعد محدودة لكل شريك والعرض سارٍ لمدة 30 يومًا.",
+
+  "courses.packages.title": "الباقات المتاحة",
+  "courses.packages.description": "اختر المسار المناسب لفريقك، أو اختر الباقة الكاملة للحصول على أفضل قيمة.",
+  "courses.packages.coursesLabel": "كورسات",
+  "courses.packages.seatsLabel": "مقعد",
+  "courses.packages.perOrg": "للمؤسسة",
+  "courses.packages.cta": "احجز هذه الباقة",
+  "courses.packages.bestValue": "أفضل قيمة",
+
+  "courses.packages.programming.name": "مسار البرمجة",
+  "courses.packages.frontend.name": "مسار الواجهات الأمامية",
+  "courses.packages.ai.name": "مسار الذكاء الاصطناعي والأتمتة",
+  "courses.packages.content.name": "مسار إنشاء المحتوى",
+  "courses.packages.bundle.name": "الباقة الكاملة — جميع الكورسات العشرة",
+  "courses.packages.bundle.valueNote": "أقل من $0.3 لكل متعلم للحصول على تدريب تقني عالمي المستوى.",
+
+  "courses.why.title": "لماذا هذا يناسب مؤسستك",
+  "courses.why.certificate.title": "شهادات دولية معتمدة",
+  "courses.why.certificate.desc": "يحصل كل متعلم على شهادة Udemy معترف بها دوليًا عند إتمام الكورس.",
+  "courses.why.tracking.title": "تتبع كامل للتقدم",
+  "courses.why.tracking.desc": "لوحة تحكم Udemy توفر تتبعًا كاملاً للتقدم وتقارير الإتمام لفريقك.",
+  "courses.why.noSetup.title": "بدون أي إعداد تقني",
+  "courses.why.noSetup.desc": "لا حاجة لأي بنية تحتية أو إعداد تقني من جانبكم. الكوبونات جاهزة للتوزيع.",
+  "courses.why.arabic.title": "مصمم للمتعلمين العرب",
+  "courses.why.arabic.desc": "جميع المحتوى باللغة العربية، مصمم خصيصًا للمهنيين والفرق العربية.",
+
+  "courses.finalCta.title": "هل أنت مستعد لتطوير فريقك؟",
+  "courses.finalCta.desc": "احجز مكالمة مجانية 15 دقيقة لمراجعة التفاصيل واختيار الباقة المناسبة لاحتياجات فريقك.",
+  "courses.finalCta.validity": "هذا العرض سارٍ لمدة 30 يومًا. المقاعد محدودة لكل شريك."
 }

@@ -6,6 +6,7 @@ import {
   inject,
   signal,
 } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ThemeService } from '../../../core/services/theme.service';
 import { TranslationService } from '../../../core/services/translation.service';
 import { TPipe } from '../../../shared/pipes/t.pipe';
@@ -14,7 +15,7 @@ import { ScrollSpyService } from '../../../core/services/scroll-spy.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [ TPipe],
+  imports: [TPipe, RouterLink],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -39,6 +40,8 @@ export class NavbarComponent implements AfterViewInit {
     { label: 'nav.services', href: '#services', id: 'services' },
     { label: 'nav.contact', href: '#contact', id: 'contact' },
   ]);
+
+  readonly coursesLink = { label: 'nav.courses', href: '/courses' };
 
   ngAfterViewInit(): void {
   setTimeout(() => {

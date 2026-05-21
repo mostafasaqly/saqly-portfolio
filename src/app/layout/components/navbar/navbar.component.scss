@@ -143,6 +143,37 @@
   background: var(--color-primary-soft);
 }
 
+.navbar__link--courses {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 30%, var(--color-border));
+  background: var(--color-primary-soft);
+  color: var(--color-primary) !important;
+  font-size: 0.88rem;
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    transform var(--transition-base);
+
+  &:hover {
+    background: color-mix(in srgb, var(--color-primary) 15%, transparent);
+    border-color: var(--color-primary);
+    transform: translateY(-1px);
+  }
+
+  &::after {
+    display: none;
+  }
+}
+
+.navbar__mobile-link--courses {
+  border-color: color-mix(in srgb, var(--color-primary) 30%, var(--color-border));
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
 @media (min-width: 992px) {
   .navbar__menu-toggle,
   .navbar__mobile-panel {

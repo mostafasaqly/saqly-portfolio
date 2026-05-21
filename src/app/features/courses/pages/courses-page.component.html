@@ -1,0 +1,145 @@
+<div class="courses-page" [attr.dir]="dir()">
+
+  <!-- Hero Section -->
+  <section class="courses-hero">
+    <div class="container courses-hero__inner">
+      <span class="courses-hero__eyebrow">{{ 'courses.eyebrow' | t }}</span>
+      <h1 class="courses-hero__title">{{ 'courses.hero.title' | t }}</h1>
+      <p class="courses-hero__subtitle">{{ 'courses.hero.subtitle' | t }}</p>
+
+      <div class="courses-hero__stats">
+        <div class="stat-pill">
+          <span class="stat-pill__value">10</span>
+          <span class="stat-pill__label">{{ 'courses.stats.courses' | t }}</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-pill__value">140+</span>
+          <span class="stat-pill__label">{{ 'courses.stats.hours' | t }}</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-pill__value">10,000</span>
+          <span class="stat-pill__label">{{ 'courses.stats.seats' | t }}</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-pill__value">5</span>
+          <span class="stat-pill__label">{{ 'courses.stats.days' | t }}</span>
+        </div>
+      </div>
+
+      <a class="courses-hero__cta" [href]="calendlyUrl" target="_blank" rel="noopener noreferrer">
+        {{ 'courses.cta.schedule' | t }}
+      </a>
+    </div>
+  </section>
+
+  <!-- Notice Banner -->
+  <div class="container">
+    <div class="notice-banner">
+      <span class="notice-banner__icon">⚠️</span>
+      <p class="notice-banner__text">{{ 'courses.notice' | t }}</p>
+    </div>
+  </div>
+
+  <!-- Packages Section -->
+  <section class="packages-section">
+    <div class="container">
+      <div class="packages-section__heading">
+        <h2 class="packages-section__title">{{ 'courses.packages.title' | t }}</h2>
+        <p class="packages-section__desc">{{ 'courses.packages.description' | t }}</p>
+      </div>
+
+      <div class="packages-grid">
+        @for (pkg of packages; track pkg.id) {
+          <article class="package-card" [class.package-card--featured]="pkg.featured">
+            @if (pkg.featured) {
+              <div class="package-card__badge">{{ 'courses.packages.bestValue' | t }}</div>
+            }
+
+            <div class="package-card__header">
+              <h3 class="package-card__track">{{ pkg.trackKey + '.name' | t }}</h3>
+              <div class="package-card__meta">
+                <span class="package-card__courses-count">
+                  {{ pkg.courses.length }} {{ 'courses.packages.coursesLabel' | t }}
+                </span>
+                <span class="package-card__seats">
+                  {{ pkg.seats | number }} {{ 'courses.packages.seatsLabel' | t }}
+                </span>
+              </div>
+              <div class="package-card__price">
+                <span class="package-card__price-value">${{ pkg.price }}</span>
+                <span class="package-card__price-note">{{ 'courses.packages.perOrg' | t }}</span>
+              </div>
+              @if (pkg.featured) {
+                <p class="package-card__value-note">{{ 'courses.packages.bundle.valueNote' | t }}</p>
+              }
+            </div>
+
+            <ul class="package-card__courses">
+              @for (course of pkg.courses; track course.url) {
+                <li class="package-card__course">
+                  <span class="package-card__course-icon">▶</span>
+                  <a class="package-card__course-link" [href]="course.url" target="_blank" rel="noopener noreferrer">
+                    {{ course.title }}
+                  </a>
+                </li>
+              }
+            </ul>
+
+            <div class="package-card__footer">
+              <a class="package-card__cta" [href]="calendlyUrl" target="_blank" rel="noopener noreferrer">
+                {{ 'courses.packages.cta' | t }}
+              </a>
+            </div>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Section -->
+  <section class="why-section">
+    <div class="container">
+      <h2 class="why-section__title">{{ 'courses.why.title' | t }}</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-card__icon">🏆</div>
+          <h3 class="why-card__title">{{ 'courses.why.certificate.title' | t }}</h3>
+          <p class="why-card__desc">{{ 'courses.why.certificate.desc' | t }}</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card__icon">📊</div>
+          <h3 class="why-card__title">{{ 'courses.why.tracking.title' | t }}</h3>
+          <p class="why-card__desc">{{ 'courses.why.tracking.desc' | t }}</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card__icon">⚡</div>
+          <h3 class="why-card__title">{{ 'courses.why.noSetup.title' | t }}</h3>
+          <p class="why-card__desc">{{ 'courses.why.noSetup.desc' | t }}</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card__icon">🌍</div>
+          <h3 class="why-card__title">{{ 'courses.why.arabic.title' | t }}</h3>
+          <p class="why-card__desc">{{ 'courses.why.arabic.desc' | t }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="container final-cta__inner">
+      <h2 class="final-cta__title">{{ 'courses.finalCta.title' | t }}</h2>
+      <p class="final-cta__desc">{{ 'courses.finalCta.desc' | t }}</p>
+      <div class="final-cta__actions">
+        <a class="final-cta__btn final-cta__btn--primary" [href]="calendlyUrl" target="_blank" rel="noopener noreferrer">
+          {{ 'courses.cta.schedule' | t }}
+        </a>
+        <a class="final-cta__btn final-cta__btn--secondary" href="/#contact">
+          {{ 'courses.cta.email' | t }}
+        </a>
+      </div>
+      <p class="final-cta__validity">{{ 'courses.finalCta.validity' | t }}</p>
+    </div>
+  </section>
+
+</div>

@@ -8,6 +8,14 @@ export const routes: Routes = [
     title: 'Mostafa Saqly | Senior Angular Engineer',
   },
   {
+    path: 'courses',
+    loadComponent: () =>
+      import('./features/courses/pages/courses-page.component').then(
+        (m) => m.CoursesPageComponent
+      ),
+    title: 'Corporate Training Packages | Mostafa Saqly',
+  },
+  {
     path: '**',
     redirectTo: '',
   },
