@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
+import { Router } from '@angular/router';
 import { TPipe } from '../../../shared/pipes/t.pipe';
 import { TranslationService } from '../../../core/services/translation.service';
 
@@ -28,7 +29,16 @@ interface CoursePackage {
 })
 export class CoursesPageComponent {
   private readonly translationService = inject(TranslationService);
+  private readonly router = inject(Router);
   readonly dir = this.translationService.dir;
+
+  goToContact(): void {
+    this.router.navigate(['/'], { fragment: 'contact' }).then(() => {
+      setTimeout(() => {
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    });
+  }
 
   readonly calendlyUrl = 'https://calendly.com/mostafasaqly1/mostafa-saqly-training-partnership';
 

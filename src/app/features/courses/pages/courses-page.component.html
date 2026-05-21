@@ -137,9 +137,9 @@
         <a class="final-cta__btn final-cta__btn--primary" [href]="calendlyUrl" target="_blank" rel="noopener noreferrer">
           {{ 'courses.cta.schedule' | t }}
         </a>
-        <a class="final-cta__btn final-cta__btn--secondary" href="/#contact">
+        <button class="final-cta__btn final-cta__btn--secondary" (click)="goToContact()">
           {{ 'courses.cta.email' | t }}
-        </a>
+        </button>
       </div>
       <p class="final-cta__validity">{{ 'courses.finalCta.validity' | t }}</p>
     </div>
