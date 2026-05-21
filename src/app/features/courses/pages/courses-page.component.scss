@@ -139,6 +139,251 @@
   font-size: 0.95rem;
 }
 
+// ── Coupon Plans Section ───────────────────────────────────
+.coupons-section {
+  padding-block: clamp(2rem, 4vw, 3.5rem);
+}
+
+.coupons-section__heading {
+  text-align: center;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.coupons-section__title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 900;
+  color: var(--color-text);
+}
+
+.coupons-section__desc {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 580px;
+  margin-inline: auto;
+}
+
+.plan-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 0.35rem;
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.plan-toggle__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base),
+    box-shadow var(--transition-base);
+
+  &:hover:not(.plan-toggle__btn--active) {
+    color: var(--color-text);
+    background: color-mix(in srgb, var(--color-surface) 60%, transparent);
+  }
+}
+
+.plan-toggle__btn--active {
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--color-primary) 35%, transparent);
+}
+
+.plan-toggle__icon {
+  font-size: 0.8rem;
+}
+
+.coupons-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.coupon-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+  background: var(--color-card);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.coupon-card--active {
+  box-shadow: 0 0 0 2px var(--color-primary), var(--shadow-md);
+}
+
+.coupon-card--flash {
+  border-color: color-mix(in srgb, #f59e0b 35%, var(--color-border));
+  background: color-mix(in srgb, #f59e0b 5%, var(--color-card));
+
+  &.coupon-card--active {
+    box-shadow: 0 0 0 2px #f59e0b, var(--shadow-md);
+  }
+
+  .coupon-card__label {
+    background: color-mix(in srgb, #f59e0b 15%, transparent);
+    color: color-mix(in srgb, #f59e0b 85%, #000);
+    border-color: color-mix(in srgb, #f59e0b 30%, var(--color-border));
+  }
+}
+
+.coupon-card--extended {
+  border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
+  background: color-mix(in srgb, var(--color-primary) 5%, var(--color-card));
+
+  .coupon-card__label {
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+    border-color: color-mix(in srgb, var(--color-primary) 25%, var(--color-border));
+  }
+}
+
+.coupon-card__top {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.coupon-card__icon {
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  font-size: 1.2rem;
+  font-weight: 900;
+  border: 1px solid;
+  transition: background-color var(--transition-base);
+}
+
+.coupon-card__icon--flash {
+  background: color-mix(in srgb, #f59e0b 12%, var(--color-card));
+  border-color: color-mix(in srgb, #f59e0b 30%, var(--color-border));
+  color: color-mix(in srgb, #f59e0b 85%, #000);
+}
+
+.coupon-card__icon--extended {
+  background: var(--color-primary-soft);
+  border-color: color-mix(in srgb, var(--color-primary) 25%, var(--color-border));
+  color: var(--color-primary);
+}
+
+.coupon-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.coupon-card__label {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.coupon-card__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.coupon-card__stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 80%, transparent);
+  color: var(--color-text);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.coupon-card__stat-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.coupon-card__desc {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+}
+
+.coupon-card__note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-top: auto;
+}
+
+.coupon-card__note--flash {
+  background: color-mix(in srgb, #f59e0b 8%, var(--color-surface));
+  border-color: color-mix(in srgb, #f59e0b 25%, var(--color-border));
+  color: color-mix(in srgb, #f59e0b 85%, #000);
+}
+
+.coupon-card__note--extended {
+  background: color-mix(in srgb, var(--color-primary) 6%, var(--color-surface));
+  border-color: color-mix(in srgb, var(--color-primary) 22%, var(--color-border));
+  color: var(--color-primary);
+}
+
+.coupon-card__note-icon {
+  font-size: 0.6rem;
+  flex-shrink: 0;
+}
+
 // ── Packages Section ───────────────────────────────────────
 .packages-section {
   padding-block: clamp(2rem, 4vw, 3.5rem) clamp(3rem, 6vw, 5rem);

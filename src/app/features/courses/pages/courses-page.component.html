@@ -9,7 +9,7 @@
 
       <div class="courses-hero__stats">
         <div class="stat-pill">
-          <span class="stat-pill__value">9</span>
+          <span class="stat-pill__value">10</span>
           <span class="stat-pill__label">{{ 'courses.stats.courses' | t }}</span>
         </div>
         <div class="stat-pill">
@@ -17,7 +17,7 @@
           <span class="stat-pill__label">{{ 'courses.stats.hours' | t }}</span>
         </div>
         <div class="stat-pill">
-          <span class="stat-pill__value">9,000</span>
+          <span class="stat-pill__value">10,000</span>
           <span class="stat-pill__label">{{ 'courses.stats.seats' | t }}</span>
         </div>
         <div class="stat-pill">
@@ -39,6 +39,87 @@
       <p class="notice-banner__text">{{ 'courses.notice' | t }}</p>
     </div>
   </div>
+
+  <!-- Coupon Plans Section -->
+  <section class="coupons-section">
+    <div class="container">
+      <div class="coupons-section__heading">
+        <h2 class="coupons-section__title">{{ 'courses.coupons.title' | t }}</h2>
+        <p class="coupons-section__desc">{{ 'courses.coupons.description' | t }}</p>
+      </div>
+
+      <div class="plan-toggle" role="group">
+        <button
+          class="plan-toggle__btn"
+          [class.plan-toggle__btn--active]="selectedPlan() === 'flash'"
+          (click)="selectPlan('flash')"
+        >
+          <span class="plan-toggle__icon">◈</span>
+          {{ 'courses.coupons.flash.label' | t }}
+        </button>
+        <button
+          class="plan-toggle__btn"
+          [class.plan-toggle__btn--active]="selectedPlan() === 'extended'"
+          (click)="selectPlan('extended')"
+        >
+          <span class="plan-toggle__icon">✦</span>
+          {{ 'courses.coupons.extended.label' | t }}
+        </button>
+      </div>
+
+      <div class="coupons-grid">
+        <!-- Flash Plan -->
+        <div class="coupon-card coupon-card--flash" [class.coupon-card--active]="selectedPlan() === 'flash'" (click)="selectPlan('flash')" role="button" tabindex="0" (keydown.enter)="selectPlan('flash')" (keydown.space)="selectPlan('flash')" style="cursor:pointer">
+          <div class="coupon-card__top">
+            <div class="coupon-card__icon coupon-card__icon--flash" aria-hidden="true">◈</div>
+            <div class="coupon-card__header">
+              <span class="coupon-card__label">{{ 'courses.coupons.flash.label' | t }}</span>
+              <div class="coupon-card__stats">
+                <span class="coupon-card__stat">
+                  <span class="coupon-card__stat-dot"></span>
+                  {{ 'courses.coupons.flash.seats' | t }}
+                </span>
+                <span class="coupon-card__stat">
+                  <span class="coupon-card__stat-dot"></span>
+                  {{ 'courses.coupons.flash.validity' | t }}
+                </span>
+              </div>
+            </div>
+          </div>
+          <p class="coupon-card__desc">{{ 'courses.coupons.flash.desc' | t }}</p>
+          <div class="coupon-card__note coupon-card__note--flash">
+            <span class="coupon-card__note-icon">◆</span>
+            {{ 'courses.coupons.flash.note' | t }}
+          </div>
+        </div>
+
+        <!-- Extended Plan -->
+        <div class="coupon-card coupon-card--extended" [class.coupon-card--active]="selectedPlan() === 'extended'" (click)="selectPlan('extended')" role="button" tabindex="0" (keydown.enter)="selectPlan('extended')" (keydown.space)="selectPlan('extended')" style="cursor:pointer">
+          <div class="coupon-card__top">
+            <div class="coupon-card__icon coupon-card__icon--extended" aria-hidden="true">✦</div>
+            <div class="coupon-card__header">
+              <span class="coupon-card__label">{{ 'courses.coupons.extended.label' | t }}</span>
+              <div class="coupon-card__stats">
+                <span class="coupon-card__stat">
+                  <span class="coupon-card__stat-dot"></span>
+                  {{ 'courses.coupons.extended.seats' | t }}
+                </span>
+                <span class="coupon-card__stat">
+                  <span class="coupon-card__stat-dot"></span>
+                  {{ 'courses.coupons.extended.validity' | t }}
+                </span>
+              </div>
+            </div>
+          </div>
+          <p class="coupon-card__desc">{{ 'courses.coupons.extended.desc' | t }}</p>
+          <div class="coupon-card__note coupon-card__note--extended">
+            <span class="coupon-card__note-icon">◆</span>
+            {{ 'courses.coupons.extended.note' | t }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Packages Section -->
   <section class="packages-section">
@@ -62,7 +143,7 @@
                   {{ pkg.courses.length }} {{ 'courses.packages.coursesLabel' | t }}
                 </span>
                 <span class="package-card__seats">
-                  {{ pkg.seats | number }} {{ 'courses.packages.seatsLabel' | t }}
+                  {{ seatsFor(pkg) | number }} {{ 'courses.packages.seatsLabel' | t }}
                 </span>
               </div>
               <div class="package-card__price">
