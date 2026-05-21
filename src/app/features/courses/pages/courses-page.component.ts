@@ -6,6 +6,7 @@ import { TranslationService } from '../../../core/services/translation.service';
 interface CourseItem {
   title: string;
   url: string;
+  hours: number;
 }
 
 interface CoursePackage {
@@ -40,11 +41,13 @@ export class CoursesPageComponent {
       courses: [
         {
           title: 'Introduction to Programming',
-          url: 'https://www.udemy.com/course/introduction-to-programming-v/?referralCode=CEC58167F8715CFCA769',
+          url: 'https://lnkd.in/dRqrZeP2',
+          hours: 8,
         },
         {
           title: 'C++ Programming',
-          url: 'https://www.udemy.com/course/programming-with-c-syntax-oop-data-structure/?referralCode=434A64158C0C5F69C02F',
+          url: 'https://lnkd.in/dMW_kKAh',
+          hours: 9,
         },
       ],
     },
@@ -56,11 +59,13 @@ export class CoursesPageComponent {
       courses: [
         {
           title: 'Full Frontend Course (Arabic) | From Zero to Angular',
-          url: 'https://www.udemy.com/course/full-frontend-course-arabic-from-zero-to-angular/?referralCode=E87CA0005A426015E2F8',
+          url: 'https://lnkd.in/dFCyPwTA',
+          hours: 84,
         },
         {
           title: 'Build Web & Mobile Apps with Angular & Capacitor (Arabic)',
-          url: 'https://www.udemy.com/course/build-web-mobile-apps-with-angular-capacitor/?referralCode=604B8A5B2FFE51DC2B3F',
+          url: 'https://lnkd.in/d5TRiMb8',
+          hours: 1,
         },
       ],
     },
@@ -72,15 +77,18 @@ export class CoursesPageComponent {
       courses: [
         {
           title: 'Introduction to Programming',
-          url: 'https://www.udemy.com/course/introduction-to-programming-v/?referralCode=CEC58167F8715CFCA769',
+          url: 'https://lnkd.in/dRqrZeP2',
+          hours: 8,
         },
         {
           title: 'Launch Your Digital Product Without a Developer (AI-Powered)',
-          url: 'https://www.udemy.com/course/ucksuhsa/?referralCode=0CE8C0B5D0CB64DF7C',
+          url: 'https://lnkd.in/duuHkHv8',
+          hours: 5,
         },
         {
           title: 'n8n in Arabic: Automate Tasks and Connect Apps Without Coding',
-          url: 'https://www.udemy.com/course/n8n-kbrx/?referralCode=BE7080CDEF876324FF3E',
+          url: 'https://lnkd.in/d9vD8SU3',
+          hours: 6,
         },
       ],
     },
@@ -92,15 +100,23 @@ export class CoursesPageComponent {
       courses: [
         {
           title: 'Comprehensive Content Design Diploma (Free Tools)',
-          url: 'https://www.udemy.com/course/saqlycourses/?referralCode=CE04B4507B472DC84F24',
+          url: 'https://lnkd.in/dgcTt4Ce',
+          hours: 5,
         },
         {
           title: 'Launch Your Online Course Step by Step',
-          url: 'https://www.udemy.com/course/create-online-course-free-tools/?referralCode=1E1177A1D242694E90D0',
+          url: 'https://lnkd.in/d3dYM_s9',
+          hours: 5,
+        },
+        {
+          title: 'Open Source Design Tools',
+          url: 'https://lnkd.in/d2Fw-hgD',
+          hours: 2,
         },
         {
           title: 'Design Tools',
-          url: 'https://www.udemy.com/course/videoscribe-movavi-video-editor-active-presenter/?referralCode=E13829849B1930DDA7BF',
+          url: 'https://lnkd.in/dwC-VJKV',
+          hours: 2,
         },
       ],
     },
@@ -113,39 +129,53 @@ export class CoursesPageComponent {
       courses: [
         {
           title: 'Introduction to Programming',
-          url: 'https://www.udemy.com/course/introduction-to-programming-v/?referralCode=CEC58167F8715CFCA769',
+          url: 'https://lnkd.in/dRqrZeP2',
+          hours: 8,
         },
         {
           title: 'C++ Programming',
-          url: 'https://www.udemy.com/course/programming-with-c-syntax-oop-data-structure/?referralCode=434A64158C0C5F69C02F',
+          url: 'https://lnkd.in/dMW_kKAh',
+          hours: 9,
         },
         {
           title: 'Full Frontend Course (Arabic) | From Zero to Angular',
-          url: 'https://www.udemy.com/course/full-frontend-course-arabic-from-zero-to-angular/?referralCode=E87CA0005A426015E2F8',
+          url: 'https://lnkd.in/dFCyPwTA',
+          hours: 84,
         },
         {
           title: 'Build Web & Mobile Apps with Angular & Capacitor (Arabic)',
-          url: 'https://www.udemy.com/course/build-web-mobile-apps-with-angular-capacitor/?referralCode=604B8A5B2FFE51DC2B3F',
+          url: 'https://lnkd.in/d5TRiMb8',
+          hours: 1,
         },
         {
           title: 'Launch Your Digital Product Without a Developer (AI-Powered)',
-          url: 'https://www.udemy.com/course/ucksuhsa/?referralCode=0CE8C0B5D0CB64DF7C',
+          url: 'https://lnkd.in/duuHkHv8',
+          hours: 5,
         },
         {
           title: 'n8n in Arabic: Automate Tasks and Connect Apps Without Coding',
-          url: 'https://www.udemy.com/course/n8n-kbrx/?referralCode=BE7080CDEF876324FF3E',
+          url: 'https://lnkd.in/d9vD8SU3',
+          hours: 6,
         },
         {
           title: 'Comprehensive Content Design Diploma (Free Tools)',
-          url: 'https://www.udemy.com/course/saqlycourses/?referralCode=CE04B4507B472DC84F24',
+          url: 'https://lnkd.in/dgcTt4Ce',
+          hours: 5,
         },
         {
           title: 'Launch Your Online Course Step by Step',
-          url: 'https://www.udemy.com/course/create-online-course-free-tools/?referralCode=1E1177A1D242694E90D0',
+          url: 'https://lnkd.in/d3dYM_s9',
+          hours: 5,
+        },
+        {
+          title: 'Open Source Design Tools',
+          url: 'https://lnkd.in/d2Fw-hgD',
+          hours: 2,
         },
         {
           title: 'Design Tools',
-          url: 'https://www.udemy.com/course/videoscribe-movavi-video-editor-active-presenter/?referralCode=E13829849B1930DDA7BF',
+          url: 'https://lnkd.in/dwC-VJKV',
+          hours: 2,
         },
       ],
     },

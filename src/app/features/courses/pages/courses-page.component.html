@@ -78,9 +78,12 @@
               @for (course of pkg.courses; track course.url) {
                 <li class="package-card__course">
                   <span class="package-card__course-icon">▶</span>
-                  <a class="package-card__course-link" [href]="course.url" target="_blank" rel="noopener noreferrer">
-                    {{ course.title }}
-                  </a>
+                  <div class="package-card__course-body">
+                    <a class="package-card__course-link" [href]="course.url" target="_blank" rel="noopener noreferrer">
+                      {{ course.title }}
+                    </a>
+                    <span class="package-card__course-hours">{{ course.hours }}h</span>
+                  </div>
                 </li>
               }
             </ul>
