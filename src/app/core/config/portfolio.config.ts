@@ -188,5 +188,19 @@ export const PORTFOLIO_CONFIG = {
       iconText: 'TC',
       featured: true,
     },
+    {
+      id: 'corporate-training',
+      title: 'services.items.corporateTraining.title',
+      description: 'services.items.corporateTraining.description',
+      bullets: [
+        'services.items.corporateTraining.bullet1',
+        'services.items.corporateTraining.bullet2',
+        'services.items.corporateTraining.bullet3',
+      ],
+      ctaLabel: 'services.actions.contactMe',
+      ctaHref: '#contact',
+      iconText: 'CT',
+      featured: false,
+    },
   ] satisfies PortfolioService[],
 } as const;

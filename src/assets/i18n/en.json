@@ -180,6 +180,12 @@
   "services.items.consultation.bullet2": "UI and product implementation direction",
   "services.items.consultation.bullet3": "Decision support for faster and cleaner execution",
 
+  "services.items.corporateTraining.title": "Corporate Training for Organizations",
+  "services.items.corporateTraining.description": "Structured Angular and front-end training programs designed for development teams inside companies, from fundamentals to advanced architecture.",
+  "services.items.corporateTraining.bullet1": "Tailored curriculum for your team's stack and level",
+  "services.items.corporateTraining.bullet2": "Hands-on workshops with real project scenarios",
+  "services.items.corporateTraining.bullet3": "Ongoing support and follow-up sessions",
+
   "contact.eyebrow": "Contact",
   "contact.title": "Let’s discuss your next Angular product or collaboration",
   "contact.description": "Whether you need a scalable Angular application, an MVP, mentoring, or technical direction, send your details and I will get back to you.",

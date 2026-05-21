@@ -180,6 +180,13 @@
   "services.items.consultation.bullet1": "دعم في التخطيط المعماري للواجهة",
   "services.items.consultation.bullet2": "توجيه في تنفيذ الواجهة والمنتج",
   "services.items.consultation.bullet3": "دعم القرار لتسريع التنفيذ وتحسين جودته",
+
+  "services.items.corporateTraining.title": "Corporate Training for Organizations",
+  "services.items.corporateTraining.description": "برامج تدريبية متخصصة في Angular وتطوير الواجهات مصممة لفرق التطوير داخل الشركات، من الأساسيات إلى البنية المتقدمة.",
+  "services.items.corporateTraining.bullet1": "منهج مخصص يتناسب مع مستوى الفريق والتقنيات المستخدمة",
+  "services.items.corporateTraining.bullet2": "ورش عمل تطبيقية بسيناريوهات مشاريع حقيقية",
+  "services.items.corporateTraining.bullet3": "دعم مستمر وجلسات متابعة بعد التدريب",
+
   "contact.eyebrow": "تواصل",
   "contact.title": "دعنا نتحدث عن مشروعك القادم أو فرص التعاون",
   "contact.description": "سواء كنت تحتاج إلى تطبيق Angular قابل للتوسع، أو MVP، أو جلسات إرشاد، أو توجيه تقني، أرسل التفاصيل وسأعود إليك.",
