@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { TPipe } from '../../../shared/pipes/t.pipe';
@@ -10,8 +10,7 @@ interface CourseItem {
   hours: number;
 }
 
-const FLASH_SEATS_PER_COURSE = 1000;
-const EXTENDED_SEATS_PER_COURSE = 100;
+const SEATS_PER_COURSE = 100;
 
 interface CoursePackage {
   id: string;
@@ -21,7 +20,14 @@ interface CoursePackage {
   featured?: boolean;
 }
 
-type CouponPlan = 'flash' | 'extended';
+interface RoiCard {
+  id: string;
+  trackKey: string;
+  packagePrice: number;
+  seats: number;
+  sellPerSeat: number;
+  profit: number;
+}
 
 @Component({
   selector: 'app-courses-page',
@@ -46,16 +52,23 @@ export class CoursesPageComponent {
 
   readonly calendlyUrl = 'https://calendly.com/mostafasaqly1/mostafa-saqly-training-partnership';
 
-  readonly selectedPlan = signal<CouponPlan>('flash');
-
-  selectPlan(plan: CouponPlan): void {
-    this.selectedPlan.set(plan);
-  }
-
   seatsFor(pkg: CoursePackage): number {
-    const perCourse = this.selectedPlan() === 'flash' ? FLASH_SEATS_PER_COURSE : EXTENDED_SEATS_PER_COURSE;
-    return pkg.courses.length * perCourse;
+    return pkg.courses.length * SEATS_PER_COURSE;
   }
+
+  readonly flippedCard = signal<string | null>(null);
+
+  toggleFlip(id: string): void {
+    this.flippedCard.update(current => current === id ? null : id);
+  }
+
+  readonly roiCards: RoiCard[] = [
+    { id: 'programming', trackKey: 'courses.packages.programming', packagePrice: 500,  seats: 200,  sellPerSeat: 15,  profit: 2500  },
+    { id: 'frontend',    trackKey: 'courses.packages.frontend',    packagePrice: 600,  seats: 200,  sellPerSeat: 20,  profit: 3400  },
+    { id: 'ai',          trackKey: 'courses.packages.ai',          packagePrice: 800,  seats: 300,  sellPerSeat: 20,  profit: 5200  },
+    { id: 'content',     trackKey: 'courses.packages.content',     packagePrice: 700,  seats: 300,  sellPerSeat: 15,  profit: 3800  },
+    { id: 'bundle',      trackKey: 'courses.packages.bundle',      packagePrice: 3000, seats: 1000, sellPerSeat: 15,  profit: 12000 },
+  ];
 
   readonly packages: CoursePackage[] = [
     {
