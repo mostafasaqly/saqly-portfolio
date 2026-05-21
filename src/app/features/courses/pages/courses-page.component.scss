@@ -23,6 +23,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+  text-align: center;
 }
 
 .courses-hero__eyebrow {
@@ -144,7 +145,7 @@
 }
 
 .packages-section__heading {
-  text-align: center;
+  text-align: center !important;
   margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
@@ -368,7 +369,7 @@
 }
 
 .why-section__title {
-  text-align: center;
+  text-align: center !important;
   margin: 0 0 clamp(2rem, 4vw, 2.5rem);
   font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 900;
@@ -392,12 +393,13 @@
 .why-card {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.75rem;
   padding: 1.5rem;
   border-radius: 20px;
   border: 1px solid var(--color-border);
   background: var(--color-card);
-  text-align: center;
+  text-align: center !important;
   transition:
     transform var(--transition-base),
     box-shadow var(--transition-base);
@@ -409,8 +411,27 @@
 }
 
 .why-card__icon {
-  font-size: 2rem;
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  margin-inline: auto;
+  border-radius: 14px;
+  font-size: 1.25rem;
+  font-weight: 900;
   line-height: 1;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 20%, var(--color-border));
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+.why-card__icon--cert  { letter-spacing: 0; }
+.why-card__icon--track { font-size: 1.4rem; }
+.why-card__icon--setup { font-size: 1.4rem; }
+.why-card__icon--arabic {
+  font-family: 'Cairo', sans-serif;
+  font-size: 1.5rem;
 }
 
 .why-card__title {
@@ -430,7 +451,7 @@
 // ── Final CTA ───────────────────────────────────────────────
 .final-cta {
   padding-block: clamp(4rem, 7vw, 6rem);
-  text-align: center;
+  text-align: center !important;
 }
 
 .final-cta__inner {
@@ -438,6 +459,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1.25rem;
+  text-align: center;
 }
 
 .final-cta__title {
@@ -513,40 +535,21 @@
 
 // ── RTL Support ─────────────────────────────────────────────
 :host-context(html[dir='rtl']) {
-  .courses-hero,
-  .packages-section__heading,
-  .why-section__title,
-  .final-cta {
-    text-align: right;
-  }
-
-  .courses-hero__inner,
-  .final-cta__inner {
-    align-items: flex-start;
-  }
-
-  .courses-hero__stats {
-    justify-content: flex-start;
-  }
-
-  .courses-hero__cta {
-    align-self: flex-start;
-  }
-
-  .packages-section__heading,
-  .why-section__title {
-    text-align: center;
-  }
-
+  // Everything stays centered — same as LTR
   .why-card {
-    text-align: right;
-  }
-
-  .final-cta {
     text-align: center;
   }
 
-  .final-cta__inner {
-    align-items: center;
+  // Package cards: right-align internal text
+  .package-card__header,
+  .package-card__meta,
+  .package-card__price {
+    text-align: right;
   }
+
+  .package-card__courses {
+    text-align: right;
+  }
+
+  // Notice banner flows RTL naturally via dir attribute
 }
