@@ -10,7 +10,11 @@
       "Bash(git commit *)",
       "Bash(curl -sL \"https://script.google.com/macros/s/AKfycbyxCVFLpUN7DgrSqZRH0KQIj0ThMmjnCKLe3MZ49LadoQ8VFL4k1PBl8JcPSJEdeaw8zg/exec\")",
       "Bash(curl -sL -X POST \"https://script.google.com/macros/s/AKfycbyxCVFLpUN7DgrSqZRH0KQIj0ThMmjnCKLe3MZ49LadoQ8VFL4k1PBl8JcPSJEdeaw8zg/exec\" -H \"Content-Type: application/x-www-form-urlencoded\" --data-urlencode \"fullName=TEST من كلود\" --data-urlencode \"email=test-claude@example.com\" --data-urlencode \"phone=01000000000\" --data-urlencode \"course=Full Frontend Course \\(Arabic\\) | From Zero to Angular\" --data-urlencode \"source=individual-training-page\")",
-      "Bash(curl -sL --post301 --post302 --post303 -X POST \"https://script.google.com/macros/s/AKfycbyxCVFLpUN7DgrSqZRH0KQIj0ThMmjnCKLe3MZ49LadoQ8VFL4k1PBl8JcPSJEdeaw8zg/exec\" -H \"Content-Type: application/x-www-form-urlencoded\" --data-urlencode \"fullName=TEST CURL\" --data-urlencode \"email=test-curl@example.com\" --data-urlencode \"phone=01000000000\" --data-urlencode \"course=Introduction To Programming\" --data-urlencode \"source=individual-training-page\")"
+      "Bash(curl -sL --post301 --post302 --post303 -X POST \"https://script.google.com/macros/s/AKfycbyxCVFLpUN7DgrSqZRH0KQIj0ThMmjnCKLe3MZ49LadoQ8VFL4k1PBl8JcPSJEdeaw8zg/exec\" -H \"Content-Type: application/x-www-form-urlencoded\" --data-urlencode \"fullName=TEST CURL\" --data-urlencode \"email=test-curl@example.com\" --data-urlencode \"phone=01000000000\" --data-urlencode \"course=Introduction To Programming\" --data-urlencode \"source=individual-training-page\")",
+      "Bash(gh auth *)",
+      "Bash(gh api *)",
+      "Bash(git check-ignore *)",
+      "Bash(grep -iE \"\\\\.env$|secret|credential|key\\\\.json|\\\\.pem$\")"
     ]
   }
 }
