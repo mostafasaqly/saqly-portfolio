@@ -18,29 +18,28 @@
 
     <nav class="navbar__nav navbar__nav--desktop" aria-label="Primary navigation">
       <!-- Main Sections dropdown -->
-      <div class="navbar__dropdown" (mouseleave)="closeDropdown()">
+      <div class="navbar__dropdown">
         <button
           class="navbar__link navbar__dropdown-trigger"
           type="button"
-          (mouseenter)="isDropdownOpen.set(true)"
-          (click)="toggleDropdown()"
           [class.navbar__link--active]="navLinks().some(l => isActive(l.id))"
         >
           {{ 'nav.main' | t }}
-          <span class="navbar__dropdown-arrow" [class.navbar__dropdown-arrow--open]="isDropdownOpen()">▾</span>
+          <span class="navbar__dropdown-arrow">▾</span>
         </button>
 
-        <div class="navbar__dropdown-menu" [class.navbar__dropdown-menu--open]="isDropdownOpen()">
-          @for (link of navLinks(); track link.href) {
-            <a
-              class="navbar__dropdown-item"
-              [class.navbar__dropdown-item--active]="isActive(link.id)"
-              [href]="link.href"
-              (click)="closeDropdown()"
-            >
-              {{ link.label | t }}
-            </a>
-          }
+        <div class="navbar__dropdown-menu">
+          <div class="navbar__dropdown-menu-inner">
+            @for (link of navLinks(); track link.href) {
+              <a
+                class="navbar__dropdown-item"
+                [class.navbar__dropdown-item--active]="isActive(link.id)"
+                [href]="link.href"
+              >
+                {{ link.label | t }}
+              </a>
+            }
+          </div>
         </div>
       </div>
 
