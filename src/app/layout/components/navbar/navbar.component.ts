@@ -31,6 +31,7 @@ export class NavbarComponent implements AfterViewInit {
   readonly activeSection = this.scrollSpyService.activeSection;
 
   readonly isMenuOpen = signal(false);
+  readonly isDropdownOpen = signal(false);
 
   readonly navLinks = computed(() => [
     { label: 'nav.home', href: '#home', id: 'home' },
@@ -71,6 +72,14 @@ export class NavbarComponent implements AfterViewInit {
 
   closeMenu(): void {
     this.isMenuOpen.set(false);
+  }
+
+  toggleDropdown(): void {
+    this.isDropdownOpen.update((v) => !v);
+  }
+
+  closeDropdown(): void {
+    this.isDropdownOpen.set(false);
   }
 
   isActive(id: string): boolean {

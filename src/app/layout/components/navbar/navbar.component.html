@@ -17,16 +17,33 @@
     </button>
 
     <nav class="navbar__nav navbar__nav--desktop" aria-label="Primary navigation">
-      @for (link of navLinks(); track link.href) {
-        <a
-          class="navbar__link"
-          [class.navbar__link--active]="isActive(link.id)"
-          [href]="link.href"
-          [attr.aria-current]="isActive(link.id) ? 'page' : null"
+      <!-- Main Sections dropdown -->
+      <div class="navbar__dropdown" (mouseleave)="closeDropdown()">
+        <button
+          class="navbar__link navbar__dropdown-trigger"
+          type="button"
+          (mouseenter)="isDropdownOpen.set(true)"
+          (click)="toggleDropdown()"
+          [class.navbar__link--active]="navLinks().some(l => isActive(l.id))"
         >
-          {{ link.label | t }}
-        </a>
-      }
+          {{ 'nav.main' | t }}
+          <span class="navbar__dropdown-arrow" [class.navbar__dropdown-arrow--open]="isDropdownOpen()">▾</span>
+        </button>
+
+        <div class="navbar__dropdown-menu" [class.navbar__dropdown-menu--open]="isDropdownOpen()">
+          @for (link of navLinks(); track link.href) {
+            <a
+              class="navbar__dropdown-item"
+              [class.navbar__dropdown-item--active]="isActive(link.id)"
+              [href]="link.href"
+              (click)="closeDropdown()"
+            >
+              {{ link.label | t }}
+            </a>
+          }
+        </div>
+      </div>
+
       <a class="navbar__link navbar__link--courses" [routerLink]="coursesLink.href">
         {{ coursesLink.label | t }}
       </a>
@@ -50,16 +67,34 @@
   >
     <div class="container navbar__mobile-content">
       <nav class="navbar__mobile-nav" aria-label="Mobile navigation">
-        @for (link of navLinks(); track link.href) {
-          <a
-            class="navbar__mobile-link"
-            [class.navbar__mobile-link--active]="isActive(link.id)"
-            [href]="link.href"
-            (click)="closeMenu()"
+        <!-- Main Sections collapsible group -->
+        <div class="navbar__mobile-group">
+          <button
+            class="navbar__mobile-link navbar__mobile-group-trigger"
+            type="button"
+            (click)="toggleDropdown()"
+            [class.navbar__mobile-link--active]="navLinks().some(l => isActive(l.id))"
           >
-            {{ link.label | t }}
-          </a>
-        }
+            {{ 'nav.main' | t }}
+            <span class="navbar__dropdown-arrow" [class.navbar__dropdown-arrow--open]="isDropdownOpen()">▾</span>
+          </button>
+
+          <div class="navbar__mobile-group-items" [class.navbar__mobile-group-items--open]="isDropdownOpen()">
+            <div class="navbar__mobile-group-inner">
+              @for (link of navLinks(); track link.href) {
+                <a
+                  class="navbar__mobile-link navbar__mobile-link--sub"
+                  [class.navbar__mobile-link--active]="isActive(link.id)"
+                  [href]="link.href"
+                  (click)="closeMenu(); closeDropdown()"
+                >
+                  {{ link.label | t }}
+                </a>
+              }
+            </div>
+          </div>
+        </div>
+
         <a
           class="navbar__mobile-link navbar__mobile-link--courses"
           [routerLink]="coursesLink.href"

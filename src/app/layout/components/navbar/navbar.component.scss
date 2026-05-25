@@ -143,6 +143,131 @@
   background: var(--color-primary-soft);
 }
 
+// ── Dropdown ──────────────────────────────────────────────────────────────────
+
+.navbar__dropdown {
+  position: relative;
+}
+
+.navbar__dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+}
+
+.navbar__dropdown-arrow {
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+  display: inline-block;
+  line-height: 1;
+
+  &--open {
+    transform: rotate(180deg);
+  }
+}
+
+.navbar__dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.85rem);
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  min-width: 170px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 200;
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--color-text) 8%, transparent);
+
+  &--open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+[dir='rtl'] .navbar__dropdown-menu {
+  transform: translateX(50%);
+
+  &--open {
+    transform: translateX(50%) translateY(0);
+  }
+}
+
+.navbar__dropdown-item {
+  display: block;
+  padding: 0.6rem 0.85rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--color-primary-soft);
+    color: var(--color-text);
+  }
+
+  &--active {
+    color: var(--color-primary);
+    background: var(--color-primary-soft);
+  }
+}
+
+// ── Mobile group ───────────────────────────────────────────────────────────────
+
+.navbar__mobile-group-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  font: inherit;
+  text-align: start;
+}
+
+.navbar__mobile-group-items {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
+
+  &--open {
+    grid-template-rows: 1fr;
+  }
+}
+
+.navbar__mobile-group-inner {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-inline-start: 0.75rem;
+  padding-top: 0.5rem;
+}
+
+.navbar__mobile-link--sub {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+// ── Courses ────────────────────────────────────────────────────────────────────
+
 .navbar__link--courses {
   display: inline-flex;
   align-items: center;
