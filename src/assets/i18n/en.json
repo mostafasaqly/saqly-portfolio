@@ -8,6 +8,7 @@
   "nav.services": "Services",
   "nav.contact": "Contact",
   "nav.courses": "Corporate Training",
+  "nav.individual": "Individual Training",
 
   "theme.light": "Light",
   "theme.dark": "Dark",
@@ -298,5 +299,65 @@
 
   "courses.finalCta.title": "Ready to Turn Your Center into an Additional Revenue Stream?",
   "courses.finalCta.desc": "Schedule a free 15-minute call to find the right package for your audience and center size.",
-  "courses.finalCta.validity": "This offer is valid for 30 days. Seats are limited per partner."
+  "courses.finalCta.validity": "This offer is valid for 30 days. Seats are limited per partner.",
+
+  "individual.eyebrow": "Individual Training",
+  "individual.title": "Pick a Course and Start Learning Today",
+  "individual.subtitle": "Choose any course below, fill in your details, then pay securely via InstaPay. Your course link arrives by email automatically within minutes.",
+  "individual.currency": "EGP",
+  "individual.priceNote": "Per course — lifetime access",
+  "individual.hours": "h",
+
+  "individual.courses.title": "Available Courses",
+  "individual.courses.desc": "All courses are in Arabic with an internationally recognized certificate on completion.",
+
+  "individual.card.select": "Enroll in This Course",
+
+  "individual.level.frontend": "Frontend",
+  "individual.level.mobile": "Mobile",
+  "individual.level.cpp": "Programming",
+  "individual.level.intro": "Beginner",
+  "individual.level.ai": "AI & No-Code",
+  "individual.level.automation": "Automation",
+  "individual.level.content": "Content Design",
+  "individual.level.courseCreation": "Course Creation",
+
+  "individual.form.eyebrow": "You're enrolling in",
+  "individual.form.change": "Change course",
+
+  "individual.field.fullName": "Full Name",
+  "individual.field.fullName.placeholder": "Enter your full name",
+  "individual.field.email": "Email",
+  "individual.field.email.placeholder": "Enter your email address",
+  "individual.field.email.hint": "Your course link will be sent to this email, so please double-check it.",
+  "individual.field.phone": "Phone Number",
+  "individual.field.phone.placeholder": "Enter your phone number",
+
+  "individual.validation.fullName.required": "Full name is required.",
+  "individual.validation.fullName.minlength": "Name must be at least 2 characters.",
+  "individual.validation.email.required": "Email is required.",
+  "individual.validation.email.invalid": "Please enter a valid email address.",
+  "individual.validation.phone.required": "Phone number is required.",
+  "individual.validation.phone.pattern": "Please enter a valid phone number.",
+  "individual.validation.phone.minlength": "Phone number is too short.",
+
+  "individual.submit.label": "Continue to Payment",
+  "individual.submit.loading": "Saving your details...",
+
+  "individual.payment.title": "Almost There — Complete Your Payment",
+  "individual.payment.intro": "Your details are saved. Follow the two steps below and your course will be sent to your email automatically.",
+  "individual.payment.step1": "Pay the course fee:",
+  "individual.payment.step2": "Pay now via InstaPay using the button below.",
+  "individual.payment.payNow": "Pay Now via InstaPay",
+  "individual.payment.emailTitle": "After you pay — check your email",
+  "individual.payment.emailBody": "Within a few minutes of paying, open your email and you'll find the link to the course you enrolled in. If it's not in your inbox, please check the Spam or Junk folder.",
+  "individual.payment.noticeTitle": "Important",
+  "individual.payment.noticeBody": "Pay right after submitting this form so the system can match your payment to your registration and send your course link within minutes.",
+  "individual.payment.chooseAnother": "Choose another course",
+
+  "individual.error.server": "Something went wrong. Please try again.",
+  "individual.error.network": "Network error. Please check your connection and try again.",
+  "individual.error.notConfigured": "Enrollment endpoint is not configured yet. Please set the Apps Script URL.",
+
+  "individual.backHome": "← Back to Home"
 }

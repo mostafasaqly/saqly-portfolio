@@ -1,0 +1,202 @@
+<div class="it-page" [attr.dir]="dir()">
+
+  <!-- Hero -->
+  <section class="it-hero">
+    <div class="container it-hero__inner">
+      <span class="it-hero__eyebrow">{{ 'individual.eyebrow' | t }}</span>
+      <h1 class="it-hero__title">{{ 'individual.title' | t }}</h1>
+      <p class="it-hero__subtitle">{{ 'individual.subtitle' | t }}</p>
+      <div class="it-hero__price">
+        <div class="it-hero__price-row">
+          <span class="it-hero__price-old">{{ originalPrice }} {{ 'individual.currency' | t }}</span>
+          <span class="it-hero__price-value">{{ price }} {{ 'individual.currency' | t }}</span>
+        </div>
+        <span class="it-hero__price-note">{{ 'individual.priceNote' | t }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses grid -->
+  <section class="container it-courses">
+    <h2 class="it-section-title">{{ 'individual.courses.title' | t }}</h2>
+    <p class="it-section-desc">{{ 'individual.courses.desc' | t }}</p>
+
+    <div class="it-grid">
+      @for (course of courses; track course.name) {
+        <article
+          class="it-card"
+          [class.it-card--selected]="selectedCourse()?.name === course.name"
+        >
+          <div class="it-card__body">
+            <span class="it-card__level">{{ course.level | t }}</span>
+            <h3 class="it-card__name">{{ course.name }}</h3>
+            <div class="it-card__meta">
+              <span class="it-card__hours">{{ course.hours }} {{ 'individual.hours' | t }}</span>
+              <span class="it-card__price">
+                <span class="it-card__price-old">{{ originalPrice }}</span>
+                {{ price }} {{ 'individual.currency' | t }}
+              </span>
+            </div>
+          </div>
+          <button class="it-card__cta" type="button" (click)="selectCourse(course)">
+            {{ 'individual.card.select' | t }}
+          </button>
+        </article>
+      }
+    </div>
+  </section>
+
+  <!-- Enrollment form (shown after selecting a course) -->
+  @if (selectedCourse(); as course) {
+    <section class="container it-enroll" id="enroll-form">
+
+      @if (submissionState() === 'success') {
+        <!-- Payment steps -->
+        <div class="it-payment">
+          <div class="it-payment__icon">✓</div>
+          <h2 class="it-payment__title">{{ 'individual.payment.title' | t }}</h2>
+          <p class="it-payment__course">{{ course.name }}</p>
+          <p class="it-payment__intro">{{ 'individual.payment.intro' | t }}</p>
+
+          <ol class="it-steps">
+            <li class="it-step">
+              <span class="it-step__num">1</span>
+              <div class="it-step__body">
+                <p class="it-step__text">{{ 'individual.payment.step1' | t }}</p>
+                <div class="it-step__amount">
+                  <span class="it-step__amount-old">{{ originalPrice }}</span>
+                  {{ price }} {{ 'individual.currency' | t }}
+                </div>
+              </div>
+            </li>
+            <li class="it-step">
+              <span class="it-step__num">2</span>
+              <div class="it-step__body">
+                <p class="it-step__text">{{ 'individual.payment.step2' | t }}</p>
+                <a class="it-step__pay" [href]="instapayUrl" target="_blank" rel="noopener noreferrer">
+                  {{ 'individual.payment.payNow' | t }}
+                </a>
+              </div>
+            </li>
+          </ol>
+
+          <div class="it-payment__email">
+            <span class="it-payment__email-icon">✉</span>
+            <div class="it-payment__email-text">
+              <strong>{{ 'individual.payment.emailTitle' | t }}</strong>
+              <p>{{ 'individual.payment.emailBody' | t }}</p>
+            </div>
+          </div>
+
+          <div class="it-payment__notice">
+            <strong>{{ 'individual.payment.noticeTitle' | t }}</strong>
+            <p>{{ 'individual.payment.noticeBody' | t }}</p>
+          </div>
+
+          <button class="it-payment__back" type="button" (click)="clearSelection()">
+            {{ 'individual.payment.chooseAnother' | t }}
+          </button>
+        </div>
+      } @else {
+        <!-- Form -->
+        <div class="it-form-card">
+          <div class="it-form-card__head">
+            <span class="it-form-card__eyebrow">{{ 'individual.form.eyebrow' | t }}</span>
+            <h2 class="it-form-card__course">{{ course.name }}</h2>
+            <button class="it-form-card__change" type="button" (click)="clearSelection()">
+              {{ 'individual.form.change' | t }}
+            </button>
+          </div>
+
+          <form class="it-form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+            <div class="form-field">
+              <label class="form-field__label" for="fullName">{{ 'individual.field.fullName' | t }}</label>
+              <input
+                id="fullName"
+                class="form-field__control"
+                type="text"
+                formControlName="fullName"
+                [attr.placeholder]="'individual.field.fullName.placeholder' | t"
+                [attr.aria-invalid]="hasError(fullNameControl)"
+                autocomplete="name"
+              />
+              @if (hasError(fullNameControl)) {
+                <p class="form-field__error">
+                  @if (fullNameControl.errors?.['required']) { {{ 'individual.validation.fullName.required' | t }} }
+                  @else if (fullNameControl.errors?.['minlength']) { {{ 'individual.validation.fullName.minlength' | t }} }
+                </p>
+              }
+            </div>
+
+            <div class="form-field">
+              <label class="form-field__label" for="email">{{ 'individual.field.email' | t }}</label>
+              <input
+                id="email"
+                class="form-field__control"
+                type="email"
+                formControlName="email"
+                [attr.placeholder]="'individual.field.email.placeholder' | t"
+                [attr.aria-invalid]="hasError(emailControl)"
+                autocomplete="email"
+                dir="ltr"
+              />
+              @if (hasError(emailControl)) {
+                <p class="form-field__error">
+                  @if (emailControl.errors?.['required']) { {{ 'individual.validation.email.required' | t }} }
+                  @else if (emailControl.errors?.['email']) { {{ 'individual.validation.email.invalid' | t }} }
+                </p>
+              }
+              <p class="form-field__hint">{{ 'individual.field.email.hint' | t }}</p>
+            </div>
+
+            <div class="form-field">
+              <label class="form-field__label" for="phone">{{ 'individual.field.phone' | t }}</label>
+              <input
+                id="phone"
+                class="form-field__control"
+                type="tel"
+                formControlName="phone"
+                [attr.placeholder]="'individual.field.phone.placeholder' | t"
+                [attr.aria-invalid]="hasError(phoneControl)"
+                autocomplete="tel"
+                dir="ltr"
+              />
+              @if (hasError(phoneControl)) {
+                <p class="form-field__error">
+                  @if (phoneControl.errors?.['required']) { {{ 'individual.validation.phone.required' | t }} }
+                  @else if (phoneControl.errors?.['pattern']) { {{ 'individual.validation.phone.pattern' | t }} }
+                  @else if (phoneControl.errors?.['minlength']) { {{ 'individual.validation.phone.minlength' | t }} }
+                </p>
+              }
+            </div>
+
+            @if (submissionState() === 'error') {
+              <div class="form-status form-status--error" role="alert" aria-live="assertive">
+                @if (serverError()) { {{ serverError()! | t }} }
+                @else { {{ 'individual.error.server' | t }} }
+              </div>
+            }
+
+            <button
+              class="it-form__submit"
+              type="submit"
+              [disabled]="submissionState() === 'submitting'"
+            >
+              @if (submissionState() === 'submitting') {
+                {{ 'individual.submit.loading' | t }}
+              } @else {
+                {{ 'individual.submit.label' | t }}
+              }
+            </button>
+          </form>
+        </div>
+      }
+
+    </section>
+  }
+
+  <div class="container it-footer-link">
+    <a [routerLink]="['/']">{{ 'individual.backHome' | t }}</a>
+  </div>
+
+</div>

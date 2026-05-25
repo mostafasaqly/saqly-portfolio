@@ -8,6 +8,7 @@
   "nav.services": "الخدمات",
   "nav.contact": "تواصل",
   "nav.courses": "تدريب الشركات",
+  "nav.individual": "تدريب فردي",
 
   "theme.light": "فاتح",
   "theme.dark": "داكن",
@@ -299,5 +300,65 @@
 
   "courses.finalCta.title": "هل أنت مستعد لتحويل مركزك لمصدر دخل إضافي؟",
   "courses.finalCta.desc": "احجز مكالمة مجانية 15 دقيقة نراجع فيها الباقة المناسبة لجمهورك وحجم مركزك.",
-  "courses.finalCta.validity": "هذا العرض ساري لمدة 30 يومًا. المقاعد محدودة لكل شريك."
+  "courses.finalCta.validity": "هذا العرض ساري لمدة 30 يومًا. المقاعد محدودة لكل شريك.",
+
+  "individual.eyebrow": "تدريب فردي",
+  "individual.title": "اختر كورسك وابدأ التعلم النهاردة",
+  "individual.subtitle": "اختر أي كورس من اللي تحت، املأ بياناتك، وادفع بأمان عبر InstaPay. لينك الكورس هيوصلك على الإيميل أوتوماتيك خلال دقائق.",
+  "individual.currency": "جنيه",
+  "individual.priceNote": "للكورس الواحد — وصول مدى الحياة",
+  "individual.hours": "ساعة",
+
+  "individual.courses.title": "الكورسات المتاحة",
+  "individual.courses.desc": "كل الكورسات باللغة العربية مع شهادة معتمدة دوليًا عند الإتمام.",
+
+  "individual.card.select": "سجل في الكورس ده",
+
+  "individual.level.frontend": "فرونت إند",
+  "individual.level.mobile": "موبايل",
+  "individual.level.cpp": "برمجة",
+  "individual.level.intro": "مبتدئ",
+  "individual.level.ai": "ذكاء اصطناعي",
+  "individual.level.automation": "أتمتة",
+  "individual.level.content": "تصميم محتوى",
+  "individual.level.courseCreation": "صناعة كورسات",
+
+  "individual.form.eyebrow": "أنت بتسجل في",
+  "individual.form.change": "غيّر الكورس",
+
+  "individual.field.fullName": "الاسم الكامل",
+  "individual.field.fullName.placeholder": "اكتب اسمك الكامل",
+  "individual.field.email": "البريد الإلكتروني",
+  "individual.field.email.placeholder": "اكتب بريدك الإلكتروني",
+  "individual.field.email.hint": "لينك الكورس هيتبعت على الإيميل ده، فتأكد إنه صح.",
+  "individual.field.phone": "رقم الهاتف",
+  "individual.field.phone.placeholder": "اكتب رقم هاتفك",
+
+  "individual.validation.fullName.required": "الاسم مطلوب.",
+  "individual.validation.fullName.minlength": "الاسم لازم يكون حرفين على الأقل.",
+  "individual.validation.email.required": "البريد الإلكتروني مطلوب.",
+  "individual.validation.email.invalid": "اكتب بريدًا إلكترونيًا صحيحًا.",
+  "individual.validation.phone.required": "رقم الهاتف مطلوب.",
+  "individual.validation.phone.pattern": "اكتب رقم هاتف صحيح.",
+  "individual.validation.phone.minlength": "رقم الهاتف قصير جدًا.",
+
+  "individual.submit.label": "متابعة للدفع",
+  "individual.submit.loading": "جارٍ حفظ بياناتك...",
+
+  "individual.payment.title": "خطوة أخيرة — أكمل الدفع",
+  "individual.payment.intro": "تم حفظ بياناتك. اتبع الخطوتين دول وكورسك هيوصلك على الإيميل أوتوماتيك.",
+  "individual.payment.step1": "ادفع رسوم الكورس:",
+  "individual.payment.step2": "ادفع دلوقتي عبر InstaPay من الزرار اللي تحت.",
+  "individual.payment.payNow": "ادفع دلوقتي عبر InstaPay",
+  "individual.payment.emailTitle": "بعد ما تدفع — افتح إيميلك",
+  "individual.payment.emailBody": "خلال دقائق من الدفع، افتح إيميلك وهتلاقي لينك الكورس اللي سجلت فيه. لو مش في الـ Inbox، شوف فولدر الـ Spam أو Junk.",
+  "individual.payment.noticeTitle": "مهم جدًا",
+  "individual.payment.noticeBody": "ادفع بعد إرسال الفورم مباشرة عشان النظام يربط دفعتك بتسجيلك ويبعتلك لينك الكورس خلال دقائق.",
+  "individual.payment.chooseAnother": "اختر كورس تاني",
+
+  "individual.error.server": "حصل خطأ ما. حاول مرة تانية.",
+  "individual.error.network": "خطأ في الشبكة. اتأكد من اتصالك وحاول تاني.",
+  "individual.error.notConfigured": "لم يتم ضبط رابط الاستقبال بعد. من فضلك ضع رابط الـ Apps Script.",
+
+  "individual.backHome": "→ العودة للرئيسية"
 }

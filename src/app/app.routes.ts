@@ -16,6 +16,14 @@ export const routes: Routes = [
     title: 'Corporate Training Packages | Mostafa Saqly',
   },
   {
+    path: 'individual-training',
+    loadComponent: () =>
+      import('./features/individual-training/pages/individual-training-page.component').then(
+        (m) => m.IndividualTrainingPageComponent
+      ),
+    title: 'Individual Training | Mostafa Saqly',
+  },
+  {
     path: '**',
     redirectTo: '',
   },

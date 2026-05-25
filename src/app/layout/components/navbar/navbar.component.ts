@@ -44,6 +44,7 @@ export class NavbarComponent implements AfterViewInit {
   ]);
 
   readonly coursesLink = { label: 'nav.courses', href: '/courses' };
+  readonly individualLink = { label: 'nav.individual', href: '/individual-training' };
 
   ngAfterViewInit(): void {
   setTimeout(() => {

@@ -43,6 +43,10 @@
         </div>
       </div>
 
+      <a class="navbar__link navbar__link--courses" [routerLink]="individualLink.href">
+        {{ individualLink.label | t }}
+      </a>
+
       <a class="navbar__link navbar__link--courses" [routerLink]="coursesLink.href">
         {{ coursesLink.label | t }}
       </a>
@@ -93,6 +97,14 @@
             </div>
           </div>
         </div>
+
+        <a
+          class="navbar__mobile-link navbar__mobile-link--courses"
+          [routerLink]="individualLink.href"
+          (click)="closeMenu()"
+        >
+          {{ individualLink.label | t }}
+        </a>
 
         <a
           class="navbar__mobile-link navbar__mobile-link--courses"
