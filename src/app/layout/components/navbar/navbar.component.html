@@ -43,11 +43,19 @@
         </div>
       </div>
 
-      <a class="navbar__link navbar__link--courses" [routerLink]="individualLink.href">
+      <a
+        class="navbar__link navbar__link--courses"
+        [routerLink]="individualLink.href"
+        routerLinkActive="navbar__link--page-active"
+      >
         {{ individualLink.label | t }}
       </a>
 
-      <a class="navbar__link navbar__link--courses" [routerLink]="coursesLink.href">
+      <a
+        class="navbar__link navbar__link--courses"
+        [routerLink]="coursesLink.href"
+        routerLinkActive="navbar__link--page-active"
+      >
         {{ coursesLink.label | t }}
       </a>
     </nav>
@@ -101,6 +109,7 @@
         <a
           class="navbar__mobile-link navbar__mobile-link--courses"
           [routerLink]="individualLink.href"
+          routerLinkActive="navbar__mobile-link--page-active"
           (click)="closeMenu()"
         >
           {{ individualLink.label | t }}
@@ -109,6 +118,7 @@
         <a
           class="navbar__mobile-link navbar__mobile-link--courses"
           [routerLink]="coursesLink.href"
+          routerLinkActive="navbar__mobile-link--page-active"
           (click)="closeMenu()"
         >
           {{ coursesLink.label | t }}

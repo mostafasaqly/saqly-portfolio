@@ -6,7 +6,7 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ThemeService } from '../../../core/services/theme.service';
 import { TranslationService } from '../../../core/services/translation.service';
 import { TPipe } from '../../../shared/pipes/t.pipe';
@@ -15,7 +15,7 @@ import { ScrollSpyService } from '../../../core/services/scroll-spy.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [TPipe, RouterLink],
+  imports: [TPipe, RouterLink, RouterLinkActive],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
