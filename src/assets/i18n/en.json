@@ -310,8 +310,10 @@
 
   "individual.courses.title": "Available Courses",
   "individual.courses.desc": "All courses are in Arabic with an internationally recognized certificate on completion.",
+  "individual.courses.previewNote": "Every course has free preview videos on Udemy — open the course page to watch a sample and pick the one that fits you best before you buy.",
 
   "individual.card.select": "Enroll in This Course",
+  "individual.card.preview": "Preview on Udemy",
 
   "individual.level.frontend": "Frontend",
   "individual.level.mobile": "Mobile",

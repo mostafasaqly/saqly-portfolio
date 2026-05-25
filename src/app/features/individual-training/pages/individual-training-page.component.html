@@ -21,6 +21,11 @@
     <h2 class="it-section-title">{{ 'individual.courses.title' | t }}</h2>
     <p class="it-section-desc">{{ 'individual.courses.desc' | t }}</p>
 
+    <div class="it-preview-note">
+      <span class="it-preview-note__icon">▶</span>
+      <p>{{ 'individual.courses.previewNote' | t }}</p>
+    </div>
+
     <div class="it-grid">
       @for (course of courses; track course.name) {
         <article
@@ -38,9 +43,19 @@
               </span>
             </div>
           </div>
-          <button class="it-card__cta" type="button" (click)="selectCourse(course)">
-            {{ 'individual.card.select' | t }}
-          </button>
+          <div class="it-card__actions">
+            <a
+              class="it-card__preview"
+              [href]="course.previewUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ 'individual.card.preview' | t }}
+            </a>
+            <button class="it-card__cta" type="button" (click)="selectCourse(course)">
+              {{ 'individual.card.select' | t }}
+            </button>
+          </div>
         </article>
       }
     </div>

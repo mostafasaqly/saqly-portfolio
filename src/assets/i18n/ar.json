@@ -311,8 +311,10 @@
 
   "individual.courses.title": "الكورسات المتاحة",
   "individual.courses.desc": "كل الكورسات باللغة العربية مع شهادة معتمدة دوليًا عند الإتمام.",
+  "individual.courses.previewNote": "كل كورس فيه فيديوهات مفتوحة للمعاينة على Udemy — افتح صفحة الكورس وشوف عينة منه عشان تختار الكورس المناسب ليك قبل ما تشتري.",
 
   "individual.card.select": "سجل في الكورس ده",
+  "individual.card.preview": "عاين الكورس على Udemy",
 
   "individual.level.frontend": "فرونت إند",
   "individual.level.mobile": "موبايل",

@@ -24,6 +24,8 @@ interface IndividualCourse {
   name: string;
   level: string;
   hours: number;
+  // Public Udemy page (referral link) so visitors can preview before buying.
+  previewUrl: string;
 }
 
 type SubmissionState = 'idle' | 'submitting' | 'success' | 'error';
@@ -55,41 +57,49 @@ export class IndividualTrainingPageComponent {
       name: 'Full Frontend Course (Arabic) | From Zero to Angular',
       level: 'individual.level.frontend',
       hours: 84,
+      previewUrl: 'https://www.udemy.com/course/full-frontend-course-arabic-from-zero-to-angular/?referralCode=E87CA0005A426015E2F8',
     },
     {
       name: 'Build Web & Mobile Apps with Angular & Capacitor - in Arabic',
       level: 'individual.level.mobile',
       hours: 1,
+      previewUrl: 'https://www.udemy.com/course/build-web-mobile-apps-with-angular-capacitor/?referralCode=604B8A5B2FFE51DC2B3F',
     },
     {
       name: 'Learn C++ from scratch | كورس برمجه متكامل سى بلس بلس',
       level: 'individual.level.cpp',
       hours: 9,
+      previewUrl: 'https://www.udemy.com/course/programming-with-c-syntax-oop-data-structure/?referralCode=434A64158C0C5F69C02F',
     },
     {
       name: 'Introduction To Programming',
       level: 'individual.level.intro',
       hours: 8,
+      previewUrl: 'https://www.udemy.com/course/introduction-to-programming-v/?referralCode=CEC58167F8715CFCA769',
     },
     {
       name: 'أطلق مشروعك الرقمي بدون مطور: منتج حقيقي بالذكاء الاصطناعي',
       level: 'individual.level.ai',
       hours: 5,
+      previewUrl: 'https://www.udemy.com/course/ucksuhsa/?referralCode=0CE8C0B5D0CB64DF7C',
     },
     {
       name: 'بالعربي: أتمتة المهام وربط التطبيقات بدون برمجة n8n',
       level: 'individual.level.automation',
       hours: 6,
+      previewUrl: 'https://www.udemy.com/course/n8n-kbrx/?referralCode=BE7080CDEF876324FF3E',
     },
     {
       name: 'دبلومة تصميم المحتوى الشاملة – ببرامج مجانيه',
       level: 'individual.level.content',
       hours: 5,
+      previewUrl: 'https://www.udemy.com/course/saqlycourses/?referralCode=CE04B4507B472DC84F24',
     },
     {
       name: 'أطلق كورسك الرقمي خطوة بخطوة | دليل صناعة الكورسات التعليمية',
       level: 'individual.level.courseCreation',
       hours: 5,
+      previewUrl: 'https://www.udemy.com/course/create-online-course-free-tools/?referralCode=1E1177A1D242694E90D0',
     },
   ];
 
