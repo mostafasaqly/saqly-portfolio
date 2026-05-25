@@ -14,7 +14,10 @@
       "Bash(gh auth *)",
       "Bash(gh api *)",
       "Bash(git check-ignore *)",
-      "Bash(grep -iE \"\\\\.env$|secret|credential|key\\\\.json|\\\\.pem$\")"
+      "Bash(grep -iE \"\\\\.env$|secret|credential|key\\\\.json|\\\\.pem$\")",
+      "Bash(git fetch *)",
+      "Bash(gh workflow *)",
+      "Bash(gh run *)"
     ]
   }
 }
