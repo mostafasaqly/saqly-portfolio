@@ -8,7 +8,7 @@
   "nav.services": "الخدمات",
   "nav.contact": "تواصل",
   "nav.courses": "تدريب الشركات",
-  "nav.individual": "تدريب فردي",
+  "nav.individual": "مسارات فردية",
 
   "theme.light": "فاتح",
   "theme.dark": "داكن",
@@ -285,7 +285,7 @@
   "courses.packages.frontend.name": "مسار الواجهات الأمامية",
   "courses.packages.ai.name": "مسار الذكاء الاصطناعي والأتمتة",
   "courses.packages.content.name": "مسار إنشاء المحتوى",
-  "courses.packages.bundle.name": "الباقة الكاملة — جميع الكورسات العشر",
+  "courses.packages.bundle.name": "الباقة الكاملة — جميع الكورسات الثمانية",
   "courses.packages.bundle.valueNote": "أقل من $0.30 للمقعد — استثمار بسيط بعائد كبير.",
 
   "courses.why.title": "لماذا يناسب هذا مركزك التدريبي",
@@ -302,17 +302,19 @@
   "courses.finalCta.desc": "احجز مكالمة مجانية 15 دقيقة نراجع فيها الباقة المناسبة لجمهورك وحجم مركزك.",
   "courses.finalCta.validity": "هذا العرض ساري لمدة 30 يومًا. المقاعد محدودة لكل شريك.",
 
-  "individual.eyebrow": "تدريب فردي",
-  "individual.title": "اختر كورسك وابدأ التعلم النهاردة",
-  "individual.subtitle": "اختر أي كورس من اللي تحت، املأ بياناتك، وادفع عبر InstaPay أو PayPal. لينك الكورس هيوصلك على الإيميل خلال 24 ساعة أياً كانت طريقة الدفع اللي هتدفع بيها.",
+  "individual.eyebrow": "مسارات فردية",
+  "individual.title": "اختر مسارك وابدأ التعلم النهاردة",
+  "individual.subtitle": "اختر أي مسار من اللي تحت، املأ بياناتك، وادفع عبر InstaPay أو PayPal. لينكات كورسات المسار هتوصلك على الإيميل خلال 24 ساعة أياً كانت طريقة الدفع اللي هتدفع بيها.",
   "individual.currency": "جنيه",
-  "individual.priceNote": "للكورس الواحد — وصول مدى الحياة",
+  "individual.priceNote": "للمسار الواحد — وصول مدى الحياة لكل كورسات المسار",
+  "individual.priceUsd.prefix": "أو ادفع عبر PayPal:",
   "individual.hours": "ساعة",
 
-  "individual.courses.title": "الكورسات المتاحة",
-  "individual.courses.desc": "كل الكورسات باللغة العربية مع شهادة معتمدة دوليًا عند الإتمام.",
-  "individual.courses.previewNote": "كل كورس فيه فيديوهات مفتوحة للمعاينة على Udemy — افتح صفحة الكورس وشوف عينة منه عشان تختار الكورس المناسب ليك قبل ما تشتري.",
+  "individual.tracks.title": "المسارات المتاحة",
+  "individual.tracks.desc": "كل مسار بيجمع كذا كورس حوالين هدف واحد. كل الكورسات باللغة العربية مع شهادة معتمدة دوليًا عند الإتمام.",
+  "individual.courses.previewNote": "كل كورس فيه فيديوهات مفتوحة للمعاينة على Udemy — اضغط على اسم الكورس عشان تشوف عينة منه قبل ما تشتري.",
 
+  "individual.card.selectTrack": "سجل في المسار ده",
   "individual.card.select": "سجل في الكورس ده",
   "individual.card.preview": "عاين الكورس على Udemy",
 
@@ -326,7 +328,9 @@
   "individual.level.courseCreation": "صناعة كورسات",
 
   "individual.form.eyebrow": "أنت بتسجل في",
+  "individual.form.eyebrowTrack": "أنت بتسجل في مسار",
   "individual.form.change": "غيّر الكورس",
+  "individual.form.changeTrack": "غيّر المسار",
 
   "individual.field.fullName": "الاسم الكامل",
   "individual.field.fullName.placeholder": "اكتب اسمك الكامل",
@@ -335,6 +339,12 @@
   "individual.field.email.hint": "لينك الكورس هيتبعت على الإيميل ده، فتأكد إنه صح.",
   "individual.field.phone": "رقم الهاتف",
   "individual.field.phone.placeholder": "اكتب رقم هاتفك",
+  "individual.field.paymentRef": "رقم مرجع الدفع",
+  "individual.field.paymentRef.placeholder": "رقم العملية InstaPay أو رقم مرجع PayPal",
+  "individual.field.paymentRef.hint": "بعد ما تدفع عبر InstaPay أو PayPal، انسخ رقم العملية أو الرقم المرجعي وحطه هنا كتأكيد للدفع.",
+
+  "individual.payBox.title": "ادفع الأول، وبعدين أكد",
+  "individual.payBox.desc": "ادفع رسوم المسار باستخدام أحد الأزرار اللي تحت، انسخ رقم العملية أو الرقم المرجعي، وبعدين الصقه في الخانة اللي تحت لتأكيد تسجيلك.",
 
   "individual.validation.fullName.required": "الاسم مطلوب.",
   "individual.validation.fullName.minlength": "الاسم لازم يكون حرفين على الأقل.",
@@ -343,23 +353,25 @@
   "individual.validation.phone.required": "رقم الهاتف مطلوب.",
   "individual.validation.phone.pattern": "اكتب رقم هاتف صحيح.",
   "individual.validation.phone.minlength": "رقم الهاتف قصير جدًا.",
+  "individual.validation.paymentRef.required": "رقم مرجع الدفع مطلوب.",
+  "individual.validation.paymentRef.minlength": "الرقم المرجعي قصير جدًا.",
 
-  "individual.submit.label": "متابعة للدفع",
+  "individual.submit.label": "تأكيد التسجيل",
   "individual.submit.loading": "جارٍ حفظ بياناتك...",
 
   "individual.payment.title": "خطوة أخيرة — أكمل الدفع",
   "individual.payment.intro": "تم حفظ بياناتك. اتبع الخطوات اللي تحت وكورسك هيوصلك على الإيميل خلال 24 ساعة أياً كانت طريقة الدفع اللي هتدفع بيها.",
-  "individual.payment.step1": "ادفع رسوم الكورس:",
-  "individual.payment.step2": "ادفع دلوقتي عبر InstaPay باستخدام الزر تحت، وهيوصلك لينك الكورس على الإيميل خلال 24 ساعة.",
+  "individual.payment.step1": "ادفع رسوم المسار:",
+  "individual.payment.step2": "ادفع دلوقتي عبر InstaPay باستخدام الزر تحت، وهيوصلك لينكات كورسات المسار على الإيميل خلال 24 ساعة.",
   "individual.payment.payNow": "ادفع دلوقتي عبر InstaPay",
   "individual.payment.paypalTitle": "لو كنت خارج مصر، اذهب للخطوة 3 وادفع عبر PayPal:",
-  "individual.payment.paypalInfo": "روح للأقسام الرئيسية > تواصل ,عشان تبعتلي رسالة باختيارك للكورس وإيميلك، وبعدين ادفع عبر PayPal باستخدام اللينك  .",
   "individual.payment.paypalLink": "paypal.me/saqly",
   "individual.payment.emailTitle": "بعد ما تدفع — افتح إيميلك",
   "individual.payment.emailBody": "خلال 24 ساعة من الدفع، افتح إيميلك وهتلاقي لينك الكورس اللي سجلت فيه. لو مش في الـ Inbox، شوف فولدر الـ Spam أو Junk.",
   "individual.payment.noticeTitle": "مهم جدًا",
   "individual.payment.noticeBody": "ادفع بعد إرسال الفورم مباشرة عشان نقدر نربط دفعتك بتسجيلك ونبعتلك لينك الكورس خلال 24 ساعة.",
   "individual.payment.chooseAnother": "اختر كورس تاني",
+  "individual.payment.chooseAnotherTrack": "اختر مسار تاني",
 
   "individual.error.server": "حصل خطأ ما. حاول مرة تانية.",
   "individual.error.network": "خطأ في الشبكة. اتأكد من اتصالك وحاول تاني.",

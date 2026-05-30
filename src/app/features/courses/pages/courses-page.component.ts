@@ -67,7 +67,7 @@ export class CoursesPageComponent {
     { id: 'frontend',    trackKey: 'courses.packages.frontend',    packagePrice: 600,  seats: 200,  sellPerSeat: 20,  profit: 3400  },
     { id: 'ai',          trackKey: 'courses.packages.ai',          packagePrice: 800,  seats: 300,  sellPerSeat: 20,  profit: 5200  },
     { id: 'content',     trackKey: 'courses.packages.content',     packagePrice: 700,  seats: 300,  sellPerSeat: 15,  profit: 3800  },
-    { id: 'bundle',      trackKey: 'courses.packages.bundle',      packagePrice: 3000, seats: 1000, sellPerSeat: 15,  profit: 12000 },
+    { id: 'bundle',      trackKey: 'courses.packages.bundle',      packagePrice: 3000, seats: 800,  sellPerSeat: 15,  profit: 9000  },
   ];
 
   readonly packages: CoursePackage[] = [
@@ -156,12 +156,12 @@ export class CoursesPageComponent {
       featured: true,
       courses: [
         {
-          title: 'Introduction to Programming',
+          title: 'Introduction To Programming',
           url: 'https://www.udemy.com/course/introduction-to-programming-v/?referralCode=CEC58167F8715CFCA769',
           hours: 8,
         },
         {
-          title: 'C++ Programming',
+          title: 'Learn C++ from scratch | كورس برمجه متكامل سى بلس بلس',
           url: 'https://www.udemy.com/course/programming-with-c-syntax-oop-data-structure/?referralCode=434A64158C0C5F69C02F',
           hours: 9,
         },
@@ -171,39 +171,29 @@ export class CoursesPageComponent {
           hours: 84,
         },
         {
-          title: 'Build Web & Mobile Apps with Angular & Capacitor (Arabic)',
+          title: 'Build Web & Mobile Apps with Angular & Capacitor - in Arabic',
           url: 'https://www.udemy.com/course/build-web-mobile-apps-with-angular-capacitor/?referralCode=604B8A5B2FFE51DC2B3F',
           hours: 1,
         },
         {
-          title: 'Launch Your Digital Product Without a Developer (AI-Powered)',
+          title: 'أطلق مشروعك الرقمي بدون مطور: منتج حقيقي بالذكاء الاصطناعي',
           url: 'https://www.udemy.com/course/ucksuhsa/?referralCode=0CE8C0B5D0CB64DF7C',
           hours: 5,
         },
         {
-          title: 'n8n in Arabic: Automate Tasks and Connect Apps Without Coding',
+          title: 'بالعربي: أتمتة المهام وربط التطبيقات بدون برمجة n8n',
           url: 'https://www.udemy.com/course/n8n-kbrx/?referralCode=BE7080CDEF876324FF3E',
           hours: 6,
         },
         {
-          title: 'Comprehensive Content Design Diploma (Free Tools)',
+          title: 'دبلومة تصميم المحتوى الشاملة – ببرامج مجانيه',
           url: 'https://www.udemy.com/course/saqlycourses/?referralCode=CE04B4507B472DC84F24',
           hours: 5,
         },
         {
-          title: 'Launch Your Online Course Step by Step',
+          title: 'أطلق كورسك الرقمي خطوة بخطوة | دليل صناعة الكورسات التعليمية',
           url: 'https://www.udemy.com/course/create-online-course-free-tools/?referralCode=1E1177A1D242694E90D0',
           hours: 5,
-        },
-        {
-          title: 'Design Tools',
-          url: 'https://www.udemy.com/course/videoscribe-movavi-video-editor-active-presenter/?referralCode=E13829849B1930DDA7BF',
-          hours: 2,
-        },
-        {
-          title: 'Open Source Design Tools',
-          url: 'https://www.udemy.com/course/open-source-design-tools/',
-          hours: 2,
         },
       ],
     },

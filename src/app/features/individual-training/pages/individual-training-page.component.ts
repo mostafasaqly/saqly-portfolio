@@ -18,14 +18,21 @@ import { TPipe } from '../../../shared/pipes/t.pipe';
 import { TranslationService } from '../../../core/services/translation.service';
 import { environment } from '../../../../environments/environment';
 
-interface IndividualCourse {
-  // Must match the course names in the Apps Script COURSE_LINKS exactly,
-  // because the backend matches the registration row by this value.
-  name: string;
-  level: string;
+interface TrackCourse {
+  title: string;
+  url: string;
   hours: number;
-  // Public Udemy page (referral link) so visitors can preview before buying.
-  previewUrl: string;
+}
+
+interface IndividualTrack {
+  id: string;
+  // Sent to the backend as the `course` field so registrations can be matched.
+  name: string;
+  trackKey: string;
+  price: number;
+  priceUsd: number;
+  courses: TrackCourse[];
+  featured?: boolean;
 }
 
 type SubmissionState = 'idle' | 'submitting' | 'success' | 'error';
@@ -44,62 +51,148 @@ export class IndividualTrainingPageComponent {
   private readonly translationService = inject(TranslationService);
 
   readonly dir = this.translationService.dir;
-  readonly price = environment.coursePrice;
-  readonly originalPrice = environment.courseOriginalPrice;
   readonly instapayUrl = environment.instapayUrl;
 
   readonly submissionState = signal<SubmissionState>('idle');
   readonly serverError = signal<string | null>(null);
-  readonly selectedCourse = signal<IndividualCourse | null>(null);
+  readonly selectedTrack = signal<IndividualTrack | null>(null);
 
-  readonly courses: IndividualCourse[] = [
+  readonly tracks: IndividualTrack[] = [
     {
-      name: 'Full Frontend Course (Arabic) | From Zero to Angular',
-      level: 'individual.level.frontend',
-      hours: 84,
-      previewUrl: 'https://www.udemy.com/course/full-frontend-course-arabic-from-zero-to-angular/?referralCode=E87CA0005A426015E2F8',
+      id: 'programming',
+      name: 'Programming Track',
+      trackKey: 'courses.packages.programming',
+      price: 500,
+      priceUsd: 10,
+      courses: [
+        {
+          title: 'Introduction to Programming',
+          url: 'https://www.udemy.com/course/introduction-to-programming-v/?referralCode=CEC58167F8715CFCA769',
+          hours: 8,
+        },
+        {
+          title: 'C++ Programming',
+          url: 'https://www.udemy.com/course/programming-with-c-syntax-oop-data-structure/?referralCode=434A64158C0C5F69C02F',
+          hours: 9,
+        },
+      ],
     },
     {
-      name: 'Build Web & Mobile Apps with Angular & Capacitor - in Arabic',
-      level: 'individual.level.mobile',
-      hours: 1,
-      previewUrl: 'https://www.udemy.com/course/build-web-mobile-apps-with-angular-capacitor/?referralCode=604B8A5B2FFE51DC2B3F',
+      id: 'frontend',
+      name: 'Frontend Track',
+      trackKey: 'courses.packages.frontend',
+      price: 600,
+      priceUsd: 15,
+      courses: [
+        {
+          title: 'Full Frontend Course (Arabic) | From Zero to Angular',
+          url: 'https://www.udemy.com/course/full-frontend-course-arabic-from-zero-to-angular/?referralCode=E87CA0005A426015E2F8',
+          hours: 84,
+        },
+        {
+          title: 'Build Web & Mobile Apps with Angular & Capacitor (Arabic)',
+          url: 'https://www.udemy.com/course/build-web-mobile-apps-with-angular-capacitor/?referralCode=604B8A5B2FFE51DC2B3F',
+          hours: 1,
+        },
+      ],
     },
     {
-      name: 'Learn C++ from scratch | كورس برمجه متكامل سى بلس بلس',
-      level: 'individual.level.cpp',
-      hours: 9,
-      previewUrl: 'https://www.udemy.com/course/programming-with-c-syntax-oop-data-structure/?referralCode=434A64158C0C5F69C02F',
+      id: 'ai',
+      name: 'AI & Automation Track',
+      trackKey: 'courses.packages.ai',
+      price: 800,
+      priceUsd: 20,
+      courses: [
+        {
+          title: 'Introduction to Programming',
+          url: 'https://www.udemy.com/course/introduction-to-programming-v/?referralCode=CEC58167F8715CFCA769',
+          hours: 8,
+        },
+        {
+          title: 'Launch Your Digital Product Without a Developer (AI-Powered)',
+          url: 'https://www.udemy.com/course/ucksuhsa/?referralCode=0CE8C0B5D0CB64DF7C',
+          hours: 5,
+        },
+        {
+          title: 'n8n in Arabic: Automate Tasks and Connect Apps Without Coding',
+          url: 'https://www.udemy.com/course/n8n-kbrx/?referralCode=BE7080CDEF876324FF3E',
+          hours: 6,
+        },
+      ],
     },
     {
-      name: 'Introduction To Programming',
-      level: 'individual.level.intro',
-      hours: 8,
-      previewUrl: 'https://www.udemy.com/course/introduction-to-programming-v/?referralCode=CEC58167F8715CFCA769',
+      id: 'content',
+      name: 'Content Creation Track',
+      trackKey: 'courses.packages.content',
+      price: 700,
+      priceUsd: 15,
+      courses: [
+        {
+          title: 'Comprehensive Content Design Diploma (Free Tools)',
+          url: 'https://www.udemy.com/course/saqlycourses/?referralCode=CE04B4507B472DC84F24',
+          hours: 5,
+        },
+        {
+          title: 'Launch Your Online Course Step by Step',
+          url: 'https://www.udemy.com/course/create-online-course-free-tools/?referralCode=1E1177A1D242694E90D0',
+          hours: 5,
+        },
+        {
+          title: 'Design Tools',
+          url: 'https://www.udemy.com/course/videoscribe-movavi-video-editor-active-presenter/?referralCode=E13829849B1930DDA7BF',
+          hours: 2,
+        },
+      ],
     },
     {
-      name: 'أطلق مشروعك الرقمي بدون مطور: منتج حقيقي بالذكاء الاصطناعي',
-      level: 'individual.level.ai',
-      hours: 5,
-      previewUrl: 'https://www.udemy.com/course/ucksuhsa/?referralCode=0CE8C0B5D0CB64DF7C',
-    },
-    {
-      name: 'بالعربي: أتمتة المهام وربط التطبيقات بدون برمجة n8n',
-      level: 'individual.level.automation',
-      hours: 6,
-      previewUrl: 'https://www.udemy.com/course/n8n-kbrx/?referralCode=BE7080CDEF876324FF3E',
-    },
-    {
-      name: 'دبلومة تصميم المحتوى الشاملة – ببرامج مجانيه',
-      level: 'individual.level.content',
-      hours: 5,
-      previewUrl: 'https://www.udemy.com/course/saqlycourses/?referralCode=CE04B4507B472DC84F24',
-    },
-    {
-      name: 'أطلق كورسك الرقمي خطوة بخطوة | دليل صناعة الكورسات التعليمية',
-      level: 'individual.level.courseCreation',
-      hours: 5,
-      previewUrl: 'https://www.udemy.com/course/create-online-course-free-tools/?referralCode=1E1177A1D242694E90D0',
+      id: 'bundle',
+      name: 'Full Bundle — All 8 Courses',
+      trackKey: 'courses.packages.bundle',
+      price: 3000,
+      priceUsd: 60,
+      featured: true,
+      courses: [
+        {
+          title: 'Introduction To Programming',
+          url: 'https://www.udemy.com/course/introduction-to-programming-v/?referralCode=CEC58167F8715CFCA769',
+          hours: 8,
+        },
+        {
+          title: 'Learn C++ from scratch | كورس برمجه متكامل سى بلس بلس',
+          url: 'https://www.udemy.com/course/programming-with-c-syntax-oop-data-structure/?referralCode=434A64158C0C5F69C02F',
+          hours: 9,
+        },
+        {
+          title: 'Full Frontend Course (Arabic) | From Zero to Angular',
+          url: 'https://www.udemy.com/course/full-frontend-course-arabic-from-zero-to-angular/?referralCode=E87CA0005A426015E2F8',
+          hours: 84,
+        },
+        {
+          title: 'Build Web & Mobile Apps with Angular & Capacitor - in Arabic',
+          url: 'https://www.udemy.com/course/build-web-mobile-apps-with-angular-capacitor/?referralCode=604B8A5B2FFE51DC2B3F',
+          hours: 1,
+        },
+        {
+          title: 'أطلق مشروعك الرقمي بدون مطور: منتج حقيقي بالذكاء الاصطناعي',
+          url: 'https://www.udemy.com/course/ucksuhsa/?referralCode=0CE8C0B5D0CB64DF7C',
+          hours: 5,
+        },
+        {
+          title: 'بالعربي: أتمتة المهام وربط التطبيقات بدون برمجة n8n',
+          url: 'https://www.udemy.com/course/n8n-kbrx/?referralCode=BE7080CDEF876324FF3E',
+          hours: 6,
+        },
+        {
+          title: 'دبلومة تصميم المحتوى الشاملة – ببرامج مجانيه',
+          url: 'https://www.udemy.com/course/saqlycourses/?referralCode=CE04B4507B472DC84F24',
+          hours: 5,
+        },
+        {
+          title: 'أطلق كورسك الرقمي خطوة بخطوة | دليل صناعة الكورسات التعليمية',
+          url: 'https://www.udemy.com/course/create-online-course-free-tools/?referralCode=1E1177A1D242694E90D0',
+          hours: 5,
+        },
+      ],
     },
   ];
 
@@ -120,14 +213,24 @@ export class IndividualTrainingPageComponent {
       Validators.maxLength(20),
       Validators.pattern(/^[0-9+\-\s()]+$/),
     ]),
+    paymentRef: this.fb.control('', [
+      Validators.required,
+      Validators.minLength(4),
+      Validators.maxLength(60),
+    ]),
   });
 
   get fullNameControl(): FormControl<string> { return this.form.controls.fullName; }
   get emailControl(): FormControl<string> { return this.form.controls.email; }
   get phoneControl(): FormControl<string> { return this.form.controls.phone; }
+  get paymentRefControl(): FormControl<string> { return this.form.controls.paymentRef; }
 
-  selectCourse(course: IndividualCourse): void {
-    this.selectedCourse.set(course);
+  totalHours(track: IndividualTrack): number {
+    return track.courses.reduce((sum, c) => sum + c.hours, 0);
+  }
+
+  selectTrack(track: IndividualTrack): void {
+    this.selectedTrack.set(track);
     this.submissionState.set('idle');
     this.serverError.set(null);
     this.form.reset();
@@ -137,7 +240,7 @@ export class IndividualTrainingPageComponent {
   }
 
   clearSelection(): void {
-    this.selectedCourse.set(null);
+    this.selectedTrack.set(null);
     this.submissionState.set('idle');
     this.serverError.set(null);
   }
@@ -147,8 +250,8 @@ export class IndividualTrainingPageComponent {
   }
 
   onSubmit(): void {
-    const course = this.selectedCourse();
-    if (!course) {
+    const track = this.selectedTrack();
+    if (!track) {
       return;
     }
 
@@ -165,13 +268,14 @@ export class IndividualTrainingPageComponent {
       return;
     }
 
-    const { fullName, email, phone } = this.form.getRawValue();
+    const { fullName, email, phone, paymentRef } = this.form.getRawValue();
 
     const body = new URLSearchParams({
       fullName: fullName.trim(),
       email: email.trim(),
       phone: phone.trim(),
-      course: course.name,
+      paymentRef: paymentRef.trim(),
+      course: track.name,
       source: 'individual-training-page',
       submittedAt: new Date().toISOString(),
     });

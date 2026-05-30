@@ -8,7 +8,7 @@
   "nav.services": "Services",
   "nav.contact": "Contact",
   "nav.courses": "Corporate Training",
-  "nav.individual": "Individual Training",
+  "nav.individual": "Individual Tracks",
 
   "theme.light": "Light",
   "theme.dark": "Dark",
@@ -284,7 +284,7 @@
   "courses.packages.frontend.name": "Frontend Track",
   "courses.packages.ai.name": "AI & Automation Track",
   "courses.packages.content.name": "Content Creation Track",
-  "courses.packages.bundle.name": "Full Bundle — All 10 Courses",
+  "courses.packages.bundle.name": "Full Bundle — All 8 Courses",
   "courses.packages.bundle.valueNote": "Less than $0.30 per seat — a small investment with a big return.",
 
   "courses.why.title": "Why This Is a Fit for Your Training Center",
@@ -301,17 +301,19 @@
   "courses.finalCta.desc": "Schedule a free 15-minute call to find the right package for your audience and center size.",
   "courses.finalCta.validity": "This offer is valid for 30 days. Seats are limited per partner.",
 
-  "individual.eyebrow": "Individual Training",
-  "individual.title": "Pick a Course and Start Learning Today",
-  "individual.subtitle": "Choose any course below, fill in your details, then pay via InstaPay or PayPal. Your course link will be sent to your email within 24 hours, whichever payment method you use.",
+  "individual.eyebrow": "Individual Tracks",
+  "individual.title": "Pick a Track and Start Learning Today",
+  "individual.subtitle": "Choose any track below, fill in your details, then pay via InstaPay or PayPal. Your course links will be sent to your email within 24 hours, whichever payment method you use.",
   "individual.currency": "EGP",
-  "individual.priceNote": "Per course — lifetime access",
+  "individual.priceNote": "Per track — lifetime access to all included courses",
+  "individual.priceUsd.prefix": "or pay via PayPal:",
   "individual.hours": "h",
 
-  "individual.courses.title": "Available Courses",
-  "individual.courses.desc": "All courses are in Arabic with an internationally recognized certificate on completion.",
-  "individual.courses.previewNote": "Every course has free preview videos on Udemy — open the course page to watch a sample and pick the one that fits you best before you buy.",
+  "individual.tracks.title": "Available Tracks",
+  "individual.tracks.desc": "Each track bundles multiple courses around one goal. All courses are in Arabic with an internationally recognized certificate on completion.",
+  "individual.courses.previewNote": "Every course has free preview videos on Udemy — click any course title to watch a sample before you buy.",
 
+  "individual.card.selectTrack": "Enroll in This Track",
   "individual.card.select": "Enroll in This Course",
   "individual.card.preview": "Preview on Udemy",
 
@@ -325,7 +327,9 @@
   "individual.level.courseCreation": "Course Creation",
 
   "individual.form.eyebrow": "You're enrolling in",
+  "individual.form.eyebrowTrack": "You're enrolling in the",
   "individual.form.change": "Change course",
+  "individual.form.changeTrack": "Change track",
 
   "individual.field.fullName": "Full Name",
   "individual.field.fullName.placeholder": "Enter your full name",
@@ -334,6 +338,12 @@
   "individual.field.email.hint": "Your course link will be sent to this email, so please double-check it.",
   "individual.field.phone": "Phone Number",
   "individual.field.phone.placeholder": "Enter your phone number",
+  "individual.field.paymentRef": "Payment Reference Number",
+  "individual.field.paymentRef.placeholder": "InstaPay transaction ID or PayPal reference",
+  "individual.field.paymentRef.hint": "After you pay via InstaPay or PayPal, paste the transaction/reference ID here as payment confirmation.",
+
+  "individual.payBox.title": "Pay first, then confirm",
+  "individual.payBox.desc": "Pay the track fee using one of the buttons below, copy the transaction/reference number, then paste it in the field below to confirm your enrollment.",
 
   "individual.validation.fullName.required": "Full name is required.",
   "individual.validation.fullName.minlength": "Name must be at least 2 characters.",
@@ -342,23 +352,25 @@
   "individual.validation.phone.required": "Phone number is required.",
   "individual.validation.phone.pattern": "Please enter a valid phone number.",
   "individual.validation.phone.minlength": "Phone number is too short.",
+  "individual.validation.paymentRef.required": "Payment reference number is required.",
+  "individual.validation.paymentRef.minlength": "Reference number is too short.",
 
-  "individual.submit.label": "Continue to Payment",
+  "individual.submit.label": "Confirm Enrollment",
   "individual.submit.loading": "Saving your details...",
 
   "individual.payment.title": "Almost There — Complete Your Payment",
   "individual.payment.intro": "Your details are saved. Follow the steps below and your course will be sent to your email within 24 hours, whichever payment method you use.",
-  "individual.payment.step1": "Pay the course fee:",
-  "individual.payment.step2": "Pay now via InstaPay using the button below, and you'll receive your course link by email within 24 hours.",
+  "individual.payment.step1": "Pay the track fee:",
+  "individual.payment.step2": "Pay now via InstaPay using the button below, and you'll receive your course links by email within 24 hours.",
   "individual.payment.payNow": "Pay Now via InstaPay",
   "individual.payment.paypalTitle": "If you are outside Egypt, go to step 3 and pay via PayPal:",
-  "individual.payment.paypalInfo": "Go to main sections > Contact, to send me a message with your course choice and email, then pay via PayPal using the link.",
   "individual.payment.paypalLink": "paypal.me/saqly",
   "individual.payment.emailTitle": "After you pay — check your email",
   "individual.payment.emailBody": "Within 24 hours of paying, open your email and you'll find the link to the course you enrolled in. If it's not in your inbox, please check the Spam or Junk folder.",
   "individual.payment.noticeTitle": "Important",
   "individual.payment.noticeBody": "Pay right after submitting this form so we can match your payment to your registration and send your course link within 24 hours.",
   "individual.payment.chooseAnother": "Choose another course",
+  "individual.payment.chooseAnotherTrack": "Choose another track",
 
   "individual.error.server": "Something went wrong. Please try again.",
   "individual.error.network": "Network error. Please check your connection and try again.",

@@ -6,20 +6,14 @@
       <span class="it-hero__eyebrow">{{ 'individual.eyebrow' | t }}</span>
       <h1 class="it-hero__title">{{ 'individual.title' | t }}</h1>
       <p class="it-hero__subtitle">{{ 'individual.subtitle' | t }}</p>
-      <div class="it-hero__price">
-        <div class="it-hero__price-row">
-          <span class="it-hero__price-old">{{ originalPrice }} {{ 'individual.currency' | t }}</span>
-          <span class="it-hero__price-value">{{ price }} {{ 'individual.currency' | t }}</span>
-        </div>
-        <span class="it-hero__price-note">{{ 'individual.priceNote' | t }}</span>
-      </div>
+      <span class="it-hero__price-note">{{ 'individual.priceNote' | t }}</span>
     </div>
   </section>
 
-  <!-- Courses grid -->
+  <!-- Tracks grid -->
   <section class="container it-courses">
-    <h2 class="it-section-title">{{ 'individual.courses.title' | t }}</h2>
-    <p class="it-section-desc">{{ 'individual.courses.desc' | t }}</p>
+    <h2 class="it-section-title">{{ 'individual.tracks.title' | t }}</h2>
+    <p class="it-section-desc">{{ 'individual.tracks.desc' | t }}</p>
 
     <div class="it-preview-note">
       <span class="it-preview-note__icon">▶</span>
@@ -27,33 +21,43 @@
     </div>
 
     <div class="it-grid">
-      @for (course of courses; track course.name) {
+      @for (track of tracks; track track.id) {
         <article
           class="it-card"
-          [class.it-card--selected]="selectedCourse()?.name === course.name"
+          [class.it-card--selected]="selectedTrack()?.id === track.id"
+          [class.it-card--featured]="track.featured"
         >
           <div class="it-card__body">
-            <span class="it-card__level">{{ course.level | t }}</span>
-            <h3 class="it-card__name">{{ course.name }}</h3>
+            @if (track.featured) {
+              <span class="it-card__badge">{{ 'courses.packages.bestValue' | t }}</span>
+            }
+            <span class="it-card__level">{{ (track.trackKey + '.name') | t }}</span>
+            <h3 class="it-card__name">{{ (track.trackKey + '.name') | t }}</h3>
+
+            <ul class="it-card__courses">
+              @for (course of track.courses; track course.url) {
+                <li>
+                  <a [href]="course.url" target="_blank" rel="noopener noreferrer">
+                    {{ course.title }}
+                  </a>
+                  <span class="it-card__course-hours">{{ course.hours }} {{ 'individual.hours' | t }}</span>
+                </li>
+              }
+            </ul>
+
             <div class="it-card__meta">
-              <span class="it-card__hours">{{ course.hours }} {{ 'individual.hours' | t }}</span>
+              <span class="it-card__hours">
+                {{ totalHours(track) }} {{ 'individual.hours' | t }} · {{ track.courses.length }} {{ 'courses.packages.coursesLabel' | t }}
+              </span>
               <span class="it-card__price">
-                <span class="it-card__price-old">{{ originalPrice }}</span>
-                {{ price }} {{ 'individual.currency' | t }}
+                {{ track.price }} {{ 'individual.currency' | t }}
+                <span class="it-card__price-usd">{{ 'individual.priceUsd.prefix' | t }} ${{ track.priceUsd }}</span>
               </span>
             </div>
           </div>
           <div class="it-card__actions">
-            <a
-              class="it-card__preview"
-              [href]="course.previewUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {{ 'individual.card.preview' | t }}
-            </a>
-            <button class="it-card__cta" type="button" (click)="selectCourse(course)">
-              {{ 'individual.card.select' | t }}
+            <button class="it-card__cta" type="button" (click)="selectTrack(track)">
+              {{ 'individual.card.selectTrack' | t }}
             </button>
           </div>
         </article>
@@ -61,8 +65,8 @@
     </div>
   </section>
 
-  <!-- Enrollment form (shown after selecting a course) -->
-  @if (selectedCourse(); as course) {
+  <!-- Enrollment form (shown after selecting a track) -->
+  @if (selectedTrack(); as track) {
     <section class="container it-enroll" id="enroll-form">
 
       @if (submissionState() === 'success') {
@@ -70,7 +74,7 @@
         <div class="it-payment">
           <div class="it-payment__icon">✓</div>
           <h2 class="it-payment__title">{{ 'individual.payment.title' | t }}</h2>
-          <p class="it-payment__course">{{ course.name }}</p>
+          <p class="it-payment__course">{{ (track.trackKey + '.name') | t }}</p>
           <p class="it-payment__intro">{{ 'individual.payment.intro' | t }}</p>
 
           <ol class="it-steps">
@@ -79,8 +83,8 @@
               <div class="it-step__body">
                 <p class="it-step__text">{{ 'individual.payment.step1' | t }}</p>
                 <div class="it-step__amount">
-                  <span class="it-step__amount-old">{{ originalPrice }}</span>
-                  {{ price }} {{ 'individual.currency' | t }}
+                  {{ track.price }} {{ 'individual.currency' | t }}
+                  <span class="it-step__amount-usd">{{ 'individual.priceUsd.prefix' | t }} ${{ track.priceUsd }}</span>
                 </div>
               </div>
             </li>
@@ -100,7 +104,6 @@
                 <a class="it-step__pay it-step__paypal-link" href="https://paypal.me/saqly" target="_blank" rel="noopener noreferrer">
                   paypal.me/saqly
                 </a>
-                <p class="it-step__paypal-info">{{ 'individual.payment.paypalInfo' | t }}</p>
               </div>
             </li>
           </ol>
@@ -119,17 +122,17 @@
           </div>
 
           <button class="it-payment__back" type="button" (click)="clearSelection()">
-            {{ 'individual.payment.chooseAnother' | t }}
+            {{ 'individual.payment.chooseAnotherTrack' | t }}
           </button>
         </div>
       } @else {
         <!-- Form -->
         <div class="it-form-card">
           <div class="it-form-card__head">
-            <span class="it-form-card__eyebrow">{{ 'individual.form.eyebrow' | t }}</span>
-            <h2 class="it-form-card__course">{{ course.name }}</h2>
+            <span class="it-form-card__eyebrow">{{ 'individual.form.eyebrowTrack' | t }}</span>
+            <h2 class="it-form-card__course">{{ (track.trackKey + '.name') | t }}</h2>
             <button class="it-form-card__change" type="button" (click)="clearSelection()">
-              {{ 'individual.form.change' | t }}
+              {{ 'individual.form.changeTrack' | t }}
             </button>
           </div>
 
@@ -193,6 +196,45 @@
                   @else if (phoneControl.errors?.['minlength']) { {{ 'individual.validation.phone.minlength' | t }} }
                 </p>
               }
+            </div>
+
+            <div class="it-pay-box">
+              <div class="it-pay-box__head">
+                <strong>{{ 'individual.payBox.title' | t }}</strong>
+                <span class="it-pay-box__amount">
+                  {{ track.price }} {{ 'individual.currency' | t }}
+                  <span class="it-pay-box__amount-usd">{{ 'individual.priceUsd.prefix' | t }} ${{ track.priceUsd }}</span>
+                </span>
+              </div>
+              <p class="it-pay-box__desc">{{ 'individual.payBox.desc' | t }}</p>
+              <div class="it-pay-box__links">
+                <a class="it-pay-box__link" [href]="instapayUrl" target="_blank" rel="noopener noreferrer">
+                  {{ 'individual.payment.payNow' | t }}
+                </a>
+                <a class="it-pay-box__link it-pay-box__link--alt" href="https://paypal.me/saqly" target="_blank" rel="noopener noreferrer">
+                  PayPal · paypal.me/saqly
+                </a>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-field__label" for="paymentRef">{{ 'individual.field.paymentRef' | t }}</label>
+              <input
+                id="paymentRef"
+                class="form-field__control"
+                type="text"
+                formControlName="paymentRef"
+                [attr.placeholder]="'individual.field.paymentRef.placeholder' | t"
+                [attr.aria-invalid]="hasError(paymentRefControl)"
+                dir="ltr"
+              />
+              @if (hasError(paymentRefControl)) {
+                <p class="form-field__error">
+                  @if (paymentRefControl.errors?.['required']) { {{ 'individual.validation.paymentRef.required' | t }} }
+                  @else if (paymentRefControl.errors?.['minlength']) { {{ 'individual.validation.paymentRef.minlength' | t }} }
+                </p>
+              }
+              <p class="form-field__hint">{{ 'individual.field.paymentRef.hint' | t }}</p>
             </div>
 
             @if (submissionState() === 'error') {
