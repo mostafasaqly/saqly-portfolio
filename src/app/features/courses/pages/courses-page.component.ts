@@ -67,7 +67,7 @@ export class CoursesPageComponent {
     { id: 'frontend',    trackKey: 'courses.packages.frontend',    packagePrice: 600,  seats: 200,  sellPerSeat: 20,  profit: 3400  },
     { id: 'ai',          trackKey: 'courses.packages.ai',          packagePrice: 800,  seats: 300,  sellPerSeat: 20,  profit: 5200  },
     { id: 'content',     trackKey: 'courses.packages.content',     packagePrice: 700,  seats: 300,  sellPerSeat: 15,  profit: 3800  },
-    { id: 'bundle',      trackKey: 'courses.packages.bundle',      packagePrice: 3000, seats: 800,  sellPerSeat: 15,  profit: 9000  },
+    { id: 'bundle',      trackKey: 'courses.packages.bundle',      packagePrice: 2000, seats: 800,  sellPerSeat: 15,  profit: 10000 },
   ];
 
   readonly packages: CoursePackage[] = [
@@ -152,7 +152,7 @@ export class CoursesPageComponent {
     {
       id: 'bundle',
       trackKey: 'courses.packages.bundle',
-      price: 3000,
+      price: 2000,
       featured: true,
       courses: [
         {

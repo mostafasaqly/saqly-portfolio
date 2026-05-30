@@ -148,8 +148,8 @@ export class IndividualTrainingPageComponent {
       id: 'bundle',
       name: 'Full Bundle — All 8 Courses',
       trackKey: 'courses.packages.bundle',
-      price: 3000,
-      priceUsd: 60,
+      price: 2000,
+      priceUsd: 40,
       featured: true,
       courses: [
         {
