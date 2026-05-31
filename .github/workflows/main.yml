@@ -36,7 +36,7 @@ jobs:
         run: npm ci
 
       - name: Build Angular app
-        run: npm run build -- --base-href /saqly-portfolio/
+        run: npm run build -- --base-href /
 
       - name: Add .nojekyll
         run: touch dist/personal-portfolio/browser/.nojekyll
