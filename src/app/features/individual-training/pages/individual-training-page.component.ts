@@ -276,6 +276,8 @@ export class IndividualTrainingPageComponent {
       phone: phone.trim(),
       paymentRef: paymentRef.trim(),
       course: track.name,
+      priceEgp: String(track.price),
+      priceUsd: String(track.priceUsd),
       source: 'individual-training-page',
       submittedAt: new Date().toISOString(),
     });
