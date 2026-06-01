@@ -282,6 +282,18 @@
     var(--color-card)
   );
   box-shadow: var(--shadow-md);
+
+  // Span both columns on large screens, like the /courses bundle card
+  @media (min-width: 768px) {
+    grid-column: 1 / -1;
+
+    // Lay the course list into two columns so it fills the full width
+    .it-card__courses {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem 0.75rem;
+    }
+  }
 }
 
 .it-card__meta {
