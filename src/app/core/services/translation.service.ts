@@ -60,6 +60,6 @@ export class TranslationService {
       return savedLanguage;
     }
 
-    return 'en';
+    return 'ar';
   }
 }
