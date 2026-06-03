@@ -83,8 +83,11 @@
               <div class="it-step__body">
                 <p class="it-step__text">{{ 'individual.payment.step1' | t }}</p>
                 <div class="it-step__amount">
-                  {{ track.price }} {{ 'individual.currency' | t }}
-                  <span class="it-step__amount-usd">{{ 'individual.priceUsd.prefix' | t }} ${{ track.priceUsd }}</span>
+                  @if (couponApplied() && couponEligible(track)) {
+                    <span class="it-pay-box__amount-old">{{ track.price }} {{ 'individual.currency' | t }}</span>
+                  }
+                  {{ effectivePrice(track) }} {{ 'individual.currency' | t }}
+                  <span class="it-step__amount-usd">{{ 'individual.priceUsd.prefix' | t }} ${{ effectivePriceUsd(track) }}</span>
                 </div>
               </div>
             </li>
@@ -198,12 +201,46 @@
               }
             </div>
 
+            @if (couponEligible(track)) {
+              <div class="it-coupon">
+                <label class="form-field__label" for="coupon">{{ 'individual.coupon.label' | t }}</label>
+                <div class="it-coupon__row">
+                  <input
+                    id="coupon"
+                    class="form-field__control it-coupon__input"
+                    type="text"
+                    formControlName="coupon"
+                    [attr.placeholder]="'individual.coupon.placeholder' | t"
+                    [readOnly]="couponApplied()"
+                    dir="ltr"
+                  />
+                  @if (couponApplied()) {
+                    <button class="it-coupon__btn it-coupon__btn--remove" type="button" (click)="removeCoupon()">
+                      {{ 'individual.coupon.remove' | t }}
+                    </button>
+                  } @else {
+                    <button class="it-coupon__btn" type="button" (click)="applyCoupon()">
+                      {{ 'individual.coupon.apply' | t }}
+                    </button>
+                  }
+                </div>
+                @if (couponApplied()) {
+                  <p class="it-coupon__success">{{ 'individual.coupon.success' | t }}</p>
+                } @else if (couponError()) {
+                  <p class="form-field__error">{{ couponError()! | t }}</p>
+                }
+              </div>
+            }
+
             <div class="it-pay-box">
               <div class="it-pay-box__head">
                 <strong>{{ 'individual.payBox.title' | t }}</strong>
                 <span class="it-pay-box__amount">
-                  {{ track.price }} {{ 'individual.currency' | t }}
-                  <span class="it-pay-box__amount-usd">{{ 'individual.priceUsd.prefix' | t }} ${{ track.priceUsd }}</span>
+                  @if (couponApplied() && couponEligible(track)) {
+                    <span class="it-pay-box__amount-old">{{ track.price }} {{ 'individual.currency' | t }}</span>
+                  }
+                  {{ effectivePrice(track) }} {{ 'individual.currency' | t }}
+                  <span class="it-pay-box__amount-usd">{{ 'individual.priceUsd.prefix' | t }} ${{ effectivePriceUsd(track) }}</span>
                 </span>
               </div>
               <p class="it-pay-box__desc">{{ 'individual.payBox.desc' | t }}</p>

@@ -57,6 +57,14 @@ export class IndividualTrainingPageComponent {
   readonly serverError = signal<string | null>(null);
   readonly selectedTrack = signal<IndividualTrack | null>(null);
 
+  // Discount coupon: makes any eligible track cost 200 EGP / $5.
+  // The Full Bundle is excluded.
+  private readonly couponCode = 'SAQLY200';
+  private readonly couponPriceEgp = 200;
+  private readonly couponPriceUsd = 5;
+  readonly couponApplied = signal(false);
+  readonly couponError = signal<string | null>(null);
+
   readonly tracks: IndividualTrack[] = [
     {
       id: 'programming',
@@ -218,21 +226,79 @@ export class IndividualTrainingPageComponent {
       Validators.minLength(4),
       Validators.maxLength(60),
     ]),
+    coupon: this.fb.control(''),
   });
 
   get fullNameControl(): FormControl<string> { return this.form.controls.fullName; }
   get emailControl(): FormControl<string> { return this.form.controls.email; }
   get phoneControl(): FormControl<string> { return this.form.controls.phone; }
   get paymentRefControl(): FormControl<string> { return this.form.controls.paymentRef; }
+  get couponControl(): FormControl<string> { return this.form.controls.coupon; }
 
   totalHours(track: IndividualTrack): number {
     return track.courses.reduce((sum, c) => sum + c.hours, 0);
+  }
+
+  /** Whether the discount coupon is allowed for the given track. */
+  couponEligible(track: IndividualTrack): boolean {
+    return track.id !== 'bundle';
+  }
+
+  /** Effective EGP price after applying the coupon (if active and eligible). */
+  effectivePrice(track: IndividualTrack): number {
+    return this.couponApplied() && this.couponEligible(track)
+      ? this.couponPriceEgp
+      : track.price;
+  }
+
+  /** Effective USD price after applying the coupon (if active and eligible). */
+  effectivePriceUsd(track: IndividualTrack): number {
+    return this.couponApplied() && this.couponEligible(track)
+      ? this.couponPriceUsd
+      : track.priceUsd;
+  }
+
+  applyCoupon(): void {
+    const track = this.selectedTrack();
+    if (!track) {
+      return;
+    }
+
+    const code = this.couponControl.value.trim().toUpperCase();
+    this.couponError.set(null);
+
+    if (!code) {
+      this.couponApplied.set(false);
+      return;
+    }
+
+    if (code !== this.couponCode) {
+      this.couponApplied.set(false);
+      this.couponError.set('individual.coupon.invalid');
+      return;
+    }
+
+    if (!this.couponEligible(track)) {
+      this.couponApplied.set(false);
+      this.couponError.set('individual.coupon.notEligible');
+      return;
+    }
+
+    this.couponApplied.set(true);
+  }
+
+  removeCoupon(): void {
+    this.couponApplied.set(false);
+    this.couponError.set(null);
+    this.couponControl.setValue('');
   }
 
   selectTrack(track: IndividualTrack): void {
     this.selectedTrack.set(track);
     this.submissionState.set('idle');
     this.serverError.set(null);
+    this.couponApplied.set(false);
+    this.couponError.set(null);
     this.form.reset();
     setTimeout(() => {
       document.getElementById('enroll-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -243,6 +309,8 @@ export class IndividualTrainingPageComponent {
     this.selectedTrack.set(null);
     this.submissionState.set('idle');
     this.serverError.set(null);
+    this.couponApplied.set(false);
+    this.couponError.set(null);
   }
 
   hasError(control: FormControl<string>): boolean {
@@ -270,14 +338,17 @@ export class IndividualTrainingPageComponent {
 
     const { fullName, email, phone, paymentRef } = this.form.getRawValue();
 
+    const couponActive = this.couponApplied() && this.couponEligible(track);
+
     const body = new URLSearchParams({
       fullName: fullName.trim(),
       email: email.trim(),
       phone: phone.trim(),
       paymentRef: paymentRef.trim(),
       course: track.name,
-      priceEgp: String(track.price),
-      priceUsd: String(track.priceUsd),
+      priceEgp: String(this.effectivePrice(track)),
+      priceUsd: String(this.effectivePriceUsd(track)),
+      coupon: couponActive ? this.couponCode : '',
       source: 'individual-training-page',
       submittedAt: new Date().toISOString(),
     });

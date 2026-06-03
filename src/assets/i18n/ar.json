@@ -346,6 +346,14 @@
   "individual.payBox.title": "ادفع الأول، وبعدين أكد",
   "individual.payBox.desc": "ادفع رسوم المسار باستخدام أحد الأزرار اللي تحت، انسخ رقم العملية أو الرقم المرجعي، وبعدين الصقه في الخانة اللي تحت لتأكيد تسجيلك.",
 
+  "individual.coupon.label": "كود الخصم",
+  "individual.coupon.placeholder": "اكتب كود الخصم لو عندك",
+  "individual.coupon.apply": "تفعيل",
+  "individual.coupon.remove": "إلغاء",
+  "individual.coupon.success": "تم تفعيل الخصم! سعر المسار بقى 200 جنيه.",
+  "individual.coupon.invalid": "كود الخصم غير صحيح.",
+  "individual.coupon.notEligible": "كود الخصم ده مش بينطبق على الباقة الكاملة.",
+
   "individual.validation.fullName.required": "الاسم مطلوب.",
   "individual.validation.fullName.minlength": "الاسم لازم يكون حرفين على الأقل.",
   "individual.validation.email.required": "البريد الإلكتروني مطلوب.",

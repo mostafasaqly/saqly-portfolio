@@ -18,7 +18,8 @@
       "Bash(git fetch *)",
       "Bash(gh workflow *)",
       "Bash(gh run *)",
-      "Bash(curl -sI \"https://mostafasaqly.github.io/saqly-portfolio/\")"
+      "Bash(curl -sI \"https://mostafasaqly.github.io/saqly-portfolio/\")",
+      "Bash(npm run *)"
     ]
   }
 }

@@ -345,6 +345,14 @@
   "individual.payBox.title": "Pay first, then confirm",
   "individual.payBox.desc": "Pay the track fee using one of the buttons below, copy the transaction/reference number, then paste it in the field below to confirm your enrollment.",
 
+  "individual.coupon.label": "Discount code",
+  "individual.coupon.placeholder": "Enter a discount code if you have one",
+  "individual.coupon.apply": "Apply",
+  "individual.coupon.remove": "Remove",
+  "individual.coupon.success": "Discount applied! The track now costs 200 EGP.",
+  "individual.coupon.invalid": "Invalid discount code.",
+  "individual.coupon.notEligible": "This code does not apply to the Full Bundle.",
+
   "individual.validation.fullName.required": "Full name is required.",
   "individual.validation.fullName.minlength": "Name must be at least 2 characters.",
   "individual.validation.email.required": "Email is required.",
