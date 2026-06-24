@@ -57,11 +57,10 @@ export class IndividualTrainingPageComponent {
   readonly serverError = signal<string | null>(null);
   readonly selectedTrack = signal<IndividualTrack | null>(null);
 
-  // Discount coupon: makes any eligible track cost 200 EGP / $5.
-  // The Full Bundle is excluded.
-  private readonly couponCode = 'SAQLY200';
-  private readonly couponPriceEgp = 200;
-  private readonly couponPriceUsd = 5;
+  // Coupon temporarily disabled — uncomment to re-enable.
+  // private readonly couponCode = 'SAQLY200';
+  // private readonly couponPriceEgp = 200;
+  // private readonly couponPriceUsd = 5;
   readonly couponApplied = signal(false);
   readonly couponError = signal<string | null>(null);
 
@@ -244,18 +243,14 @@ export class IndividualTrainingPageComponent {
     return track.id !== 'bundle';
   }
 
-  /** Effective EGP price after applying the coupon (if active and eligible). */
+  /** Effective EGP price — coupon disabled, always returns track price. */
   effectivePrice(track: IndividualTrack): number {
-    return this.couponApplied() && this.couponEligible(track)
-      ? this.couponPriceEgp
-      : track.price;
+    return track.price;
   }
 
-  /** Effective USD price after applying the coupon (if active and eligible). */
+  /** Effective USD price — coupon disabled, always returns track price. */
   effectivePriceUsd(track: IndividualTrack): number {
-    return this.couponApplied() && this.couponEligible(track)
-      ? this.couponPriceUsd
-      : track.priceUsd;
+    return track.priceUsd;
   }
 
   applyCoupon(): void {
@@ -264,27 +259,9 @@ export class IndividualTrainingPageComponent {
       return;
     }
 
-    const code = this.couponControl.value.trim().toUpperCase();
-    this.couponError.set(null);
-
-    if (!code) {
-      this.couponApplied.set(false);
-      return;
-    }
-
-    if (code !== this.couponCode) {
-      this.couponApplied.set(false);
-      this.couponError.set('individual.coupon.invalid');
-      return;
-    }
-
-    if (!this.couponEligible(track)) {
-      this.couponApplied.set(false);
-      this.couponError.set('individual.coupon.notEligible');
-      return;
-    }
-
-    this.couponApplied.set(true);
+    // Coupon temporarily disabled.
+    this.couponApplied.set(false);
+    this.couponError.set('individual.coupon.invalid');
   }
 
   removeCoupon(): void {
@@ -338,8 +315,6 @@ export class IndividualTrainingPageComponent {
 
     const { fullName, email, phone, paymentRef } = this.form.getRawValue();
 
-    const couponActive = this.couponApplied() && this.couponEligible(track);
-
     const body = new URLSearchParams({
       fullName: fullName.trim(),
       email: email.trim(),
@@ -348,7 +323,7 @@ export class IndividualTrainingPageComponent {
       course: track.name,
       priceEgp: String(this.effectivePrice(track)),
       priceUsd: String(this.effectivePriceUsd(track)),
-      coupon: couponActive ? this.couponCode : '',
+      coupon: '',
       source: 'individual-training-page',
       submittedAt: new Date().toISOString(),
     });
