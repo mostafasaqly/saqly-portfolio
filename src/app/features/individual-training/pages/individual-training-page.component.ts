@@ -12,7 +12,7 @@ import {
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { finalize } from 'rxjs';
+import { finalize, timeout } from 'rxjs';
 
 import { TPipe } from '../../../shared/pipes/t.pipe';
 import { TranslationService } from '../../../core/services/translation.service';
@@ -22,6 +22,7 @@ interface TrackCourse {
   title: string;
   url: string;
   hours: number;
+  desc?: string;
 }
 
 interface IndividualTrack {
@@ -33,6 +34,8 @@ interface IndividualTrack {
   priceUsd: number;
   courses: TrackCourse[];
   featured?: boolean;
+  // Which sheet/product the Apps Script should route this enrollment to.
+  productType?: string;
 }
 
 type SubmissionState = 'idle' | 'submitting' | 'success' | 'error';
@@ -203,6 +206,59 @@ export class IndividualTrainingPageComponent {
     },
   ];
 
+  readonly jsEverywhereTrack: IndividualTrack = {
+    id: 'js-everywhere',
+    name: 'JavaScript Everywhere',
+    trackKey: 'individual.jsEverywhere',
+    price: 200,
+    priceUsd: 10,
+    productType: 'js-everywhere',
+    courses: [
+      {
+        title: 'JS/TS Foundations + Web Basics',
+        url: '#',
+        hours: 0,
+        desc: 'Core JavaScript, ES6+, async, TypeScript, Git — plus HTML/CSS/DOM refreshers. Project: Task Manager App.',
+      },
+      {
+        title: 'Full-Stack Web Application',
+        url: '#',
+        hours: 0,
+        desc: 'React front-end, Express/Node back-end, auth, databases, deployment. Capstone: a live, deployed course platform.',
+      },
+      {
+        title: 'Mobile Development (React Native)',
+        url: '#',
+        hours: 0,
+        desc: 'Same backend, new screen. Navigation, forms, local storage, auth, and a packaged Android app.',
+      },
+      {
+        title: 'Desktop Applications (Electron)',
+        url: '#',
+        hours: 0,
+        desc: 'Turn the web skillset into an installable desktop app with file system access and a local database.',
+      },
+      {
+        title: 'Chrome Extension',
+        url: '#',
+        hours: 0,
+        desc: 'Manifest, content & background scripts, extension storage. Project: an AI-powered article summarizer.',
+      },
+      {
+        title: 'Automation',
+        url: '#',
+        hours: 0,
+        desc: 'Node.js scripts, scheduled cron jobs, email automation, Google Apps Script. Project: an automated registration system.',
+      },
+      {
+        title: 'AI Application',
+        url: '#',
+        hours: 0,
+        desc: 'LLM APIs, prompt engineering, structured outputs, embeddings, RAG, agents, MCP servers. Project: an AI assistant that answers student questions.',
+      },
+    ],
+  };
+
   readonly form = this.fb.group({
     fullName: this.fb.control('', [
       Validators.required,
@@ -325,6 +381,7 @@ export class IndividualTrainingPageComponent {
       priceUsd: String(this.effectivePriceUsd(track)),
       coupon: '',
       source: 'individual-training-page',
+      productType: track.productType ?? 'individual',
       submittedAt: new Date().toISOString(),
     });
 
@@ -336,6 +393,7 @@ export class IndividualTrainingPageComponent {
         responseType: 'text',
       })
       .pipe(
+        timeout(20000),
         finalize(() => {
           if (this.submissionState() === 'submitting') {
             this.submissionState.set('idle');
@@ -357,9 +415,11 @@ export class IndividualTrainingPageComponent {
             this.submissionState.set('success');
           }
         },
-        error: () => {
+        error: (err) => {
           this.submissionState.set('error');
-          this.serverError.set('individual.error.network');
+          this.serverError.set(
+            err?.name === 'TimeoutError' ? 'individual.error.timeout' : 'individual.error.network'
+          );
         },
       });
   }

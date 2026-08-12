@@ -314,6 +314,12 @@
   "individual.tracks.desc": "كل مسار بيجمع كذا كورس حوالين هدف واحد. كل الكورسات باللغة العربية مع شهادة معتمدة دوليًا عند الإتمام.",
   "individual.courses.previewNote": "كل كورس فيه فيديوهات مفتوحة للمعاينة على Udemy — اضغط على اسم الكورس عشان تشوف عينة منه قبل ما تشتري.",
 
+  "individual.jsEverywhere.badge": "برنامج جديد",
+  "individual.jsEverywhere.name": "JavaScript Everywhere",
+  "individual.jsEverywhere.duration": "6 شهور",
+  "individual.jsEverywhere.desc": "برنامج مدته 6 شهور بيغطي 7 مسارات، بيوصلك من أساسيات الجافاسكريبت لحد بناء مشاريع حقيقية في الويب والموبايل والباك إند.",
+  "individual.jsEverywhere.payment.intro": "تم حفظ بياناتك وسيتم إضافتك على الواتس اب.",
+
   "individual.card.selectTrack": "سجل في المسار ده",
   "individual.card.select": "سجل في الكورس ده",
   "individual.card.preview": "عاين الكورس على Udemy",
@@ -367,7 +373,7 @@
   "individual.submit.label": "تأكيد التسجيل",
   "individual.submit.loading": "جارٍ حفظ بياناتك...",
 
-  "individual.payment.title": "خطوة أخيرة — أكمل الدفع",
+  "individual.payment.title": "خطوة أخيرة — أكتمل الدفع",
   "individual.payment.intro": "تم حفظ بياناتك. اتبع الخطوات اللي تحت وكورسك هيوصلك على الإيميل خلال 24 ساعة أياً كانت طريقة الدفع اللي هتدفع بيها.",
   "individual.payment.step1": "ادفع رسوم المسار:",
   "individual.payment.step2": "ادفع دلوقتي عبر InstaPay باستخدام الزر تحت، وهيوصلك لينكات كورسات المسار على الإيميل خلال 24 ساعة.",
@@ -383,6 +389,7 @@
 
   "individual.error.server": "حصل خطأ ما. حاول مرة تانية.",
   "individual.error.network": "خطأ في الشبكة. اتأكد من اتصالك وحاول تاني.",
+  "individual.error.timeout": "الاستجابة بتاخد وقت أطول من المتوقع. حاول تاني بعد شوية.",
   "individual.error.notConfigured": "لم يتم ضبط رابط الاستقبال بعد. من فضلك ضع رابط الـ Apps Script.",
 
   "individual.backHome": "→ العودة للرئيسية"

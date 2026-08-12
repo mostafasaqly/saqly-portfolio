@@ -65,69 +65,125 @@
     </div>
   </section>
 
+  <!-- JavaScript Everywhere — standalone program -->
+  <section class="container it-js-everywhere">
+    <div
+      class="it-card it-card--featured it-js-card"
+      [class.it-card--selected]="selectedTrack()?.id === jsEverywhereTrack.id"
+    >
+      <div class="it-card__body">
+        <span class="it-card__badge">{{ 'individual.jsEverywhere.badge' | t }}</span>
+        <span class="it-card__level">{{ 'individual.jsEverywhere.duration' | t }}</span>
+        <h3 class="it-card__name">{{ 'individual.jsEverywhere.name' | t }}</h3>
+        <p class="it-js-card__desc">{{ 'individual.jsEverywhere.desc' | t }}</p>
+
+        <ul class="it-js-card__tracks">
+          @for (course of jsEverywhereTrack.courses; track course.title) {
+            <li class="it-js-card__track">
+              <span class="it-js-card__track-num">{{ $index + 1 }}</span>
+              <div class="it-js-card__track-body">
+                <strong>{{ course.title }}</strong>
+                <p>{{ course.desc }}</p>
+              </div>
+            </li>
+          }
+        </ul>
+
+        <div class="it-card__meta">
+          <span class="it-card__hours">
+            {{ 'individual.jsEverywhere.duration' | t }} · {{ jsEverywhereTrack.courses.length }} {{ 'courses.packages.coursesLabel' | t }}
+          </span>
+          <span class="it-card__price">
+            {{ jsEverywhereTrack.price }} {{ 'individual.currency' | t }}
+            <span class="it-card__price-usd">{{ 'individual.priceUsd.prefix' | t }} ${{ jsEverywhereTrack.priceUsd }}</span>
+          </span>
+        </div>
+      </div>
+      <div class="it-card__actions">
+        <button class="it-card__cta" type="button" (click)="selectTrack(jsEverywhereTrack)">
+          {{ 'individual.card.selectTrack' | t }}
+        </button>
+      </div>
+    </div>
+  </section>
+
   <!-- Enrollment form (shown after selecting a track) -->
   @if (selectedTrack(); as track) {
     <section class="container it-enroll" id="enroll-form">
 
       @if (submissionState() === 'success') {
-        <!-- Payment steps -->
-        <div class="it-payment">
-          <div class="it-payment__icon">✓</div>
-          <h2 class="it-payment__title">{{ 'individual.payment.title' | t }}</h2>
-          <p class="it-payment__course">{{ (track.trackKey + '.name') | t }}</p>
-          <p class="it-payment__intro">{{ 'individual.payment.intro' | t }}</p>
+        @if (track.id === jsEverywhereTrack.id) {
+          <!-- Simple confirmation — no payment steps for this program -->
+          <div class="it-payment">
+            <div class="it-payment__icon">✓</div>
+            <h2 class="it-payment__title">{{ 'individual.payment.title' | t }}</h2>
+            <p class="it-payment__course">{{ (track.trackKey + '.name') | t }}</p>
+            <p class="it-payment__intro">{{ 'individual.jsEverywhere.payment.intro' | t }}</p>
 
-          <ol class="it-steps">
-            <li class="it-step">
-              <span class="it-step__num">1</span>
-              <div class="it-step__body">
-                <p class="it-step__text">{{ 'individual.payment.step1' | t }}</p>
-                <div class="it-step__amount">
-                  @if (couponApplied() && couponEligible(track)) {
-                    <span class="it-pay-box__amount-old">{{ track.price }} {{ 'individual.currency' | t }}</span>
-                  }
-                  {{ effectivePrice(track) }} {{ 'individual.currency' | t }}
-                  <span class="it-step__amount-usd">{{ 'individual.priceUsd.prefix' | t }} ${{ effectivePriceUsd(track) }}</span>
+            <button class="it-payment__back" type="button" (click)="clearSelection()">
+              {{ 'individual.payment.chooseAnotherTrack' | t }}
+            </button>
+          </div>
+        } @else {
+          <!-- Payment steps -->
+          <div class="it-payment">
+            <div class="it-payment__icon">✓</div>
+            <h2 class="it-payment__title">{{ 'individual.payment.title' | t }}</h2>
+            <p class="it-payment__course">{{ (track.trackKey + '.name') | t }}</p>
+            <p class="it-payment__intro">{{ 'individual.payment.intro' | t }}</p>
+
+            <ol class="it-steps">
+              <li class="it-step">
+                <span class="it-step__num">1</span>
+                <div class="it-step__body">
+                  <p class="it-step__text">{{ 'individual.payment.step1' | t }}</p>
+                  <div class="it-step__amount">
+                    @if (couponApplied() && couponEligible(track)) {
+                      <span class="it-pay-box__amount-old">{{ track.price }} {{ 'individual.currency' | t }}</span>
+                    }
+                    {{ effectivePrice(track) }} {{ 'individual.currency' | t }}
+                    <span class="it-step__amount-usd">{{ 'individual.priceUsd.prefix' | t }} ${{ effectivePriceUsd(track) }}</span>
+                  </div>
                 </div>
-              </div>
-            </li>
-            <li class="it-step">
-              <span class="it-step__num">2</span>
-              <div class="it-step__body">
-                <p class="it-step__text">{{ 'individual.payment.step2' | t }}</p>
-                <a class="it-step__pay" [href]="instapayUrl" target="_blank" rel="noopener noreferrer">
-                  {{ 'individual.payment.payNow' | t }}
-                </a>
-              </div>
-            </li>
-            <li class="it-step">
-              <span class="it-step__num">3</span>
-              <div class="it-step__body">
-                <p class="it-step__text">{{ 'individual.payment.paypalTitle' | t }}</p>
-                <a class="it-step__pay it-step__paypal-link" href="https://paypal.me/saqly" target="_blank" rel="noopener noreferrer">
-                  paypal.me/saqly
-                </a>
-              </div>
-            </li>
-          </ol>
+              </li>
+              <li class="it-step">
+                <span class="it-step__num">2</span>
+                <div class="it-step__body">
+                  <p class="it-step__text">{{ 'individual.payment.step2' | t }}</p>
+                  <a class="it-step__pay" [href]="instapayUrl" target="_blank" rel="noopener noreferrer">
+                    {{ 'individual.payment.payNow' | t }}
+                  </a>
+                </div>
+              </li>
+              <li class="it-step">
+                <span class="it-step__num">3</span>
+                <div class="it-step__body">
+                  <p class="it-step__text">{{ 'individual.payment.paypalTitle' | t }}</p>
+                  <a class="it-step__pay it-step__paypal-link" href="https://paypal.me/saqly" target="_blank" rel="noopener noreferrer">
+                    paypal.me/saqly
+                  </a>
+                </div>
+              </li>
+            </ol>
 
-          <div class="it-payment__email">
-            <span class="it-payment__email-icon">✉</span>
-            <div class="it-payment__email-text">
-              <strong>{{ 'individual.payment.emailTitle' | t }}</strong>
-              <p>{{ 'individual.payment.emailBody' | t }}</p>
+            <div class="it-payment__email">
+              <span class="it-payment__email-icon">✉</span>
+              <div class="it-payment__email-text">
+                <strong>{{ 'individual.payment.emailTitle' | t }}</strong>
+                <p>{{ 'individual.payment.emailBody' | t }}</p>
+              </div>
             </div>
-          </div>
 
-          <div class="it-payment__notice">
-            <strong>{{ 'individual.payment.noticeTitle' | t }}</strong>
-            <p>{{ 'individual.payment.noticeBody' | t }}</p>
-          </div>
+            <div class="it-payment__notice">
+              <strong>{{ 'individual.payment.noticeTitle' | t }}</strong>
+              <p>{{ 'individual.payment.noticeBody' | t }}</p>
+            </div>
 
-          <button class="it-payment__back" type="button" (click)="clearSelection()">
-            {{ 'individual.payment.chooseAnotherTrack' | t }}
-          </button>
-        </div>
+            <button class="it-payment__back" type="button" (click)="clearSelection()">
+              {{ 'individual.payment.chooseAnotherTrack' | t }}
+            </button>
+          </div>
+        }
       } @else {
         <!-- Form -->
         <div class="it-form-card">
@@ -287,8 +343,10 @@
               class="it-form__submit"
               type="submit"
               [disabled]="submissionState() === 'submitting'"
+              [class.it-form__submit--loading]="submissionState() === 'submitting'"
             >
               @if (submissionState() === 'submitting') {
+                <span class="it-form__submit-spinner" aria-hidden="true"></span>
                 {{ 'individual.submit.loading' | t }}
               } @else {
                 {{ 'individual.submit.label' | t }}

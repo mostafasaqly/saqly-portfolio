@@ -313,6 +313,12 @@
   "individual.tracks.desc": "Each track bundles multiple courses around one goal. All courses are in Arabic with an internationally recognized certificate on completion.",
   "individual.courses.previewNote": "Every course has free preview videos on Udemy — click any course title to watch a sample before you buy.",
 
+  "individual.jsEverywhere.badge": "New Program",
+  "individual.jsEverywhere.name": "JavaScript Everywhere",
+  "individual.jsEverywhere.duration": "6 months",
+  "individual.jsEverywhere.desc": "A 6-month program covering 7 tracks, taking you from JavaScript fundamentals to building real projects across the web, mobile, and backend.",
+  "individual.jsEverywhere.payment.intro": "Your details have been saved and you'll be added to the WhatsApp group.",
+
   "individual.card.selectTrack": "Enroll in This Track",
   "individual.card.select": "Enroll in This Course",
   "individual.card.preview": "Preview on Udemy",
@@ -366,7 +372,7 @@
   "individual.submit.label": "Confirm Enrollment",
   "individual.submit.loading": "Saving your details...",
 
-  "individual.payment.title": "Almost There — Complete Your Payment",
+  "individual.payment.title": "Almost There — Done Your Payment",
   "individual.payment.intro": "Your details are saved. Follow the steps below and your course will be sent to your email within 24 hours, whichever payment method you use.",
   "individual.payment.step1": "Pay the track fee:",
   "individual.payment.step2": "Pay now via InstaPay using the button below, and you'll receive your course links by email within 24 hours.",
@@ -382,6 +388,7 @@
 
   "individual.error.server": "Something went wrong. Please try again.",
   "individual.error.network": "Network error. Please check your connection and try again.",
+  "individual.error.timeout": "This is taking longer than expected. Please try again in a moment.",
   "individual.error.notConfigured": "Enrollment endpoint is not configured yet. Please set the Apps Script URL.",
 
   "individual.backHome": "← Back to Home"

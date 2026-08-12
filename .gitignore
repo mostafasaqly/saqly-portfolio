@@ -42,3 +42,7 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Google Apps Script backend (contains sheet IDs / admin email — kept local only)
+/google-apps-script
+code.gs

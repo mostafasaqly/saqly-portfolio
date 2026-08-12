@@ -406,6 +406,80 @@
   }
 }
 
+// ── JavaScript Everywhere (standalone program) ─────────────────────────────────
+
+.it-js-everywhere {
+  padding-block: 0 clamp(2.5rem, 5vw, 4rem);
+}
+
+.it-js-card {
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.it-js-card__desc {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+.it-js-card__tracks {
+  list-style: none;
+  padding: 0;
+  margin: 0.25rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.it-js-card__track {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--color-primary) 4%, transparent);
+  border: 1px solid var(--color-border);
+}
+
+.it-js-card__track-num {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+.it-js-card__track-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  strong {
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: var(--color-text);
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+  }
+}
+
 // ── Enroll section ───────────────────────────────────────────────────────────────
 
 .it-enroll {
@@ -682,6 +756,10 @@
 
 .it-form__submit {
   width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
   padding: 0.9rem 1.5rem;
   border-radius: 14px;
   border: none;
@@ -701,6 +779,26 @@
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+
+  &--loading {
+    opacity: 0.85;
+  }
+}
+
+.it-form__submit-spinner {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  animation: it-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes it-spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
