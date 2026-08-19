@@ -63,10 +63,10 @@ export class CoursesPageComponent {
   }
 
   readonly roiCards: RoiCard[] = [
-    { id: 'programming', trackKey: 'courses.packages.programming', packagePrice: 500,  seats: 200,  sellPerSeat: 15,  profit: 2500  },
-    { id: 'frontend',    trackKey: 'courses.packages.frontend',    packagePrice: 600,  seats: 200,  sellPerSeat: 20,  profit: 3400  },
-    { id: 'ai',          trackKey: 'courses.packages.ai',          packagePrice: 800,  seats: 300,  sellPerSeat: 20,  profit: 5200  },
-    { id: 'content',     trackKey: 'courses.packages.content',     packagePrice: 700,  seats: 300,  sellPerSeat: 15,  profit: 3800  },
+    { id: 'programming', trackKey: 'courses.packages.programming', packagePrice: 200,  seats: 200,  sellPerSeat: 15,  profit: 2800  },
+    { id: 'frontend',    trackKey: 'courses.packages.frontend',    packagePrice: 200,  seats: 200,  sellPerSeat: 20,  profit: 3800  },
+    { id: 'ai',          trackKey: 'courses.packages.ai',          packagePrice: 200,  seats: 300,  sellPerSeat: 20,  profit: 5800  },
+    { id: 'content',     trackKey: 'courses.packages.content',     packagePrice: 200,  seats: 300,  sellPerSeat: 15,  profit: 4300  },
     { id: 'bundle',      trackKey: 'courses.packages.bundle',      packagePrice: 2000, seats: 800,  sellPerSeat: 15,  profit: 10000 },
   ];
 
@@ -74,7 +74,7 @@ export class CoursesPageComponent {
     {
       id: 'programming',
       trackKey: 'courses.packages.programming',
-      price: 500,
+      price: 200,
       courses: [
         {
           title: 'Introduction to Programming',
@@ -91,7 +91,7 @@ export class CoursesPageComponent {
     {
       id: 'frontend',
       trackKey: 'courses.packages.frontend',
-      price: 600,
+      price: 200,
       courses: [
         {
           title: 'Full Frontend Course (Arabic) | From Zero to Angular',
@@ -108,7 +108,7 @@ export class CoursesPageComponent {
     {
       id: 'ai',
       trackKey: 'courses.packages.ai',
-      price: 800,
+      price: 200,
       courses: [
         {
           title: 'Introduction to Programming',
@@ -130,7 +130,7 @@ export class CoursesPageComponent {
     {
       id: 'content',
       trackKey: 'courses.packages.content',
-      price: 700,
+      price: 200,
       courses: [
         {
           title: 'Comprehensive Content Design Diploma (Free Tools)',

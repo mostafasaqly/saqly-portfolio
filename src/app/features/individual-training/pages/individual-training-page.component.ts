@@ -72,7 +72,7 @@ export class IndividualTrainingPageComponent {
       id: 'programming',
       name: 'Programming Track',
       trackKey: 'courses.packages.programming',
-      price: 500,
+      price: 200,
       priceUsd: 10,
       courses: [
         {
@@ -91,8 +91,8 @@ export class IndividualTrainingPageComponent {
       id: 'frontend',
       name: 'Frontend Track',
       trackKey: 'courses.packages.frontend',
-      price: 600,
-      priceUsd: 15,
+      price: 200,
+      priceUsd: 10,
       courses: [
         {
           title: 'Full Frontend Course (Arabic) | From Zero to Angular',
@@ -110,8 +110,8 @@ export class IndividualTrainingPageComponent {
       id: 'ai',
       name: 'AI & Automation Track',
       trackKey: 'courses.packages.ai',
-      price: 800,
-      priceUsd: 20,
+      price: 200,
+      priceUsd: 10,
       courses: [
         {
           title: 'Introduction to Programming',
@@ -134,8 +134,8 @@ export class IndividualTrainingPageComponent {
       id: 'content',
       name: 'Content Creation Track',
       trackKey: 'courses.packages.content',
-      price: 700,
-      priceUsd: 15,
+      price: 200,
+      priceUsd: 10,
       courses: [
         {
           title: 'Comprehensive Content Design Diploma (Free Tools)',
