@@ -210,8 +210,8 @@ export class IndividualTrainingPageComponent {
     id: 'js-everywhere',
     name: 'JavaScript Everywhere',
     trackKey: 'individual.jsEverywhere',
-    price: 200,
-    priceUsd: 10,
+    price: 300,
+    priceUsd: 15,
     productType: 'js-everywhere',
     courses: [
       {
