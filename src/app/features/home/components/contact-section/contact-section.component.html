@@ -38,6 +38,17 @@
           (ngSubmit)="onSubmit()"
           novalidate
         >
+          <div class="hp-field" aria-hidden="true">
+            <label for="website">Website</label>
+            <input
+              id="website"
+              type="text"
+              formControlName="website"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+
           <div class="contact-form__grid">
             <div class="form-field">
               <label class="form-field__label" for="name">
@@ -58,6 +69,8 @@
                 <p id="name-error" class="form-field__error">
                   @if (nameControl.errors?.['required']) {
                     {{ 'contact.validation.name.required' | t }}
+                  } @else if (nameControl.errors?.['gibberish']) {
+                    {{ 'contact.validation.suspicious' | t }}
                   } @else if (nameControl.errors?.['minlength']) {
                     {{ 'contact.validation.name.minlength' | t }}
                   } @else if (nameControl.errors?.['maxlength']) {
@@ -187,6 +200,8 @@
               <p id="message-error" class="form-field__error">
                 @if (messageControl.errors?.['required']) {
                   {{ 'contact.validation.message.required' | t }}
+                } @else if (messageControl.errors?.['gibberish']) {
+                  {{ 'contact.validation.suspicious' | t }}
                 } @else if (messageControl.errors?.['minlength']) {
                   {{ 'contact.validation.message.minlength' | t }}
                 } @else if (messageControl.errors?.['maxlength']) {

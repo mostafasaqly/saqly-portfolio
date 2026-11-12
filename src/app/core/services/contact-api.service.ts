@@ -20,6 +20,8 @@ export class ContactApiService {
       phone: payload.phone?.trim() ?? '',
       service: payload.service?.trim() ?? '',
       message: payload.message?.trim() ?? '',
+      website: payload.website ?? '',
+      elapsedMs: String(payload.elapsedMs ?? 0),
       locale: payload.locale?.trim() ?? '',
       source: payload.source?.trim() ?? 'portfolio-web-app',
       submittedAt: payload.submittedAt?.trim() ?? new Date().toISOString(),

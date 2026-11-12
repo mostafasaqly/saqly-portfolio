@@ -196,6 +196,10 @@
           </div>
 
           <form class="it-form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+            <div class="hp-field" aria-hidden="true">
+              <label for="website">Website</label>
+              <input id="website" type="text" formControlName="website" tabindex="-1" autocomplete="off" />
+            </div>
             <div class="form-field">
               <label class="form-field__label" for="fullName">{{ 'individual.field.fullName' | t }}</label>
               <input
@@ -210,6 +214,7 @@
               @if (hasError(fullNameControl)) {
                 <p class="form-field__error">
                   @if (fullNameControl.errors?.['required']) { {{ 'individual.validation.fullName.required' | t }} }
+                  @else if (fullNameControl.errors?.['gibberish']) { {{ 'contact.validation.suspicious' | t }} }
                   @else if (fullNameControl.errors?.['minlength']) { {{ 'individual.validation.fullName.minlength' | t }} }
                 </p>
               }

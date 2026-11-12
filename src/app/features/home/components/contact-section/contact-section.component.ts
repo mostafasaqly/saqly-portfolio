@@ -11,7 +11,11 @@ import { finalize } from 'rxjs';
 import { SectionContainerComponent } from '../../../../shared/components/section-container/section-container.component';
 import { SectionHeadingComponent } from '../../../../shared/components/section-heading/section-heading.component';
 import { TPipe } from '../../../../shared/pipes/t.pipe';
-import { noDisposableEmailValidator } from '../../../../shared/validators/no-disposable-email.validator';
+import { realEmailValidator } from '../../../../shared/validators/no-disposable-email.validator';
+import {
+  isBotSubmission,
+  noGibberishValidator,
+} from '../../../../shared/validators/no-gibberish.validator';
 import { TranslationService } from '../../../../core/services/translation.service';
 import { PORTFOLIO_CONFIG } from '../../../../core/config/portfolio.config';
 import {
@@ -75,11 +79,12 @@ export class ContactSectionComponent {
       Validators.required,
       Validators.minLength(2),
       Validators.maxLength(80),
+      noGibberishValidator,
     ]),
     email: this.fb.control('', [
       Validators.required,
       Validators.email,
-      noDisposableEmailValidator,
+      realEmailValidator,
       Validators.maxLength(120),
     ]),
     phone: this.fb.control('', [
@@ -93,8 +98,13 @@ export class ContactSectionComponent {
       Validators.required,
       Validators.minLength(10),
       Validators.maxLength(1200),
+      noGibberishValidator,
     ]),
+    // Honeypot: hidden from people, filled in by bots.
+    website: this.fb.control(''),
   });
+
+  private readonly openedAt = Date.now();
 
   get nameControl(): FormControl<string> {
     return this.form.controls.name;
@@ -127,8 +137,20 @@ export class ContactSectionComponent {
       return;
     }
 
+    const { website, ...fields } = this.form.getRawValue();
+
+    // Bot detected: pretend it worked so the bot learns nothing, but send nothing.
+    if (isBotSubmission(website, this.openedAt)) {
+      this.submissionState.set('success');
+      this.serverMessageKey.set('contact.status.successReal');
+      this.form.reset();
+      return;
+    }
+
     const payload: ContactRequestPayload = {
-      ...this.form.getRawValue(),
+      ...fields,
+      website,
+      elapsedMs: Date.now() - this.openedAt,
       locale: this.currentLanguage(),
       source: 'portfolio-web-app',
       submittedAt: new Date().toISOString(),

@@ -48,3 +48,19 @@ export const noDisposableEmailValidator: ValidatorFn = (
   if (typeof value !== 'string' || !value.includes('@')) return null;
   return isDisposableEmail(value) ? { disposableEmail: true } : null;
 };
+
+/** Gmail ignores dots, so bots pad the local part with many of them (a.b.c.d.e@gmail.com). */
+export function isSuspiciousGmail(email: string): boolean {
+  const [local, domain] = email.trim().toLowerCase().split('@');
+  if (!local || (domain !== 'gmail.com' && domain !== 'googlemail.com')) return false;
+  return (local.match(/\./g) ?? []).length >= 4;
+}
+
+/** Rejects disposable domains and dot-stuffed Gmail addresses. */
+export const realEmailValidator: ValidatorFn = (
+  control: AbstractControl
+): ValidationErrors | null => {
+  const value = control.value;
+  if (typeof value !== 'string' || !value.includes('@')) return null;
+  return isDisposableEmail(value) || isSuspiciousGmail(value) ? { disposableEmail: true } : null;
+};

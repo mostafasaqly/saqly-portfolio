@@ -15,7 +15,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { finalize, timeout } from 'rxjs';
 
 import { TPipe } from '../../../shared/pipes/t.pipe';
-import { noDisposableEmailValidator } from '../../../shared/validators/no-disposable-email.validator';
+import { realEmailValidator } from '../../../shared/validators/no-disposable-email.validator';
+import {
+  isBotSubmission,
+  noGibberishValidator,
+} from '../../../shared/validators/no-gibberish.validator';
 import { TranslationService } from '../../../core/services/translation.service';
 import { environment } from '../../../../environments/environment';
 
@@ -265,11 +269,12 @@ export class IndividualTrainingPageComponent {
       Validators.required,
       Validators.minLength(2),
       Validators.maxLength(80),
+      noGibberishValidator,
     ]),
     email: this.fb.control('', [
       Validators.required,
       Validators.email,
-      noDisposableEmailValidator,
+      realEmailValidator,
       Validators.maxLength(120),
     ]),
     phone: this.fb.control('', [
@@ -284,7 +289,11 @@ export class IndividualTrainingPageComponent {
       Validators.maxLength(60),
     ]),
     coupon: this.fb.control(''),
+    // Honeypot: hidden from people, filled in by bots.
+    website: this.fb.control(''),
   });
+
+  private formOpenedAt = Date.now();
 
   get fullNameControl(): FormControl<string> { return this.form.controls.fullName; }
   get emailControl(): FormControl<string> { return this.form.controls.email; }
@@ -335,6 +344,7 @@ export class IndividualTrainingPageComponent {
     this.couponApplied.set(false);
     this.couponError.set(null);
     this.form.reset();
+    this.formOpenedAt = Date.now();
     setTimeout(() => {
       document.getElementById('enroll-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 50);
@@ -371,7 +381,13 @@ export class IndividualTrainingPageComponent {
       return;
     }
 
-    const { fullName, email, phone, paymentRef } = this.form.getRawValue();
+    const { fullName, email, phone, paymentRef, website } = this.form.getRawValue();
+
+    // Bot detected: pretend it worked so the bot learns nothing, but send nothing.
+    if (isBotSubmission(website, this.formOpenedAt)) {
+      this.submissionState.set('success');
+      return;
+    }
 
     const body = new URLSearchParams({
       fullName: fullName.trim(),
@@ -382,6 +398,8 @@ export class IndividualTrainingPageComponent {
       priceEgp: String(this.effectivePrice(track)),
       priceUsd: String(this.effectivePriceUsd(track)),
       coupon: '',
+      website,
+      elapsedMs: String(Date.now() - this.formOpenedAt),
       source: 'individual-training-page',
       productType: track.productType ?? 'individual',
       submittedAt: new Date().toISOString(),

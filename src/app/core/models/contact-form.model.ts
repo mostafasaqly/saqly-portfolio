@@ -12,4 +12,7 @@ export interface ContactRequestPayload extends ContactFormValue {
   locale: 'en' | 'ar';
   source: 'portfolio-web-app';
   submittedAt: string;
+  /** Anti-spam: honeypot value (must be empty) and time spent on the form. */
+  website: string;
+  elapsedMs: number;
 }

@@ -222,8 +222,9 @@
 
   "contact.validation.email.required": "البريد الإلكتروني مطلوب.",
   "contact.validation.email.invalid": "يرجى إدخال بريد إلكتروني صحيح.",
-  "contact.validation.email.disposable": "لا يُسمح بالبريد الإلكتروني المؤقت أو المستخدم لمرة واحدة.",
-  "individual.validation.email.disposable": "لا يُسمح بالبريد الإلكتروني المؤقت أو المستخدم لمرة واحدة.",
+  "contact.validation.email.disposable": "يرجى استخدام بريدك الإلكتروني الحقيقي والدائم.",
+  "contact.validation.suspicious": "يرجى كتابة نص حقيقي وليس حروفًا عشوائية.",
+  "individual.validation.email.disposable": "يرجى استخدام بريدك الإلكتروني الحقيقي والدائم.",
   "contact.validation.email.maxlength": "البريد الإلكتروني يجب ألا يزيد عن 120 حرفًا.",
 
   "contact.validation.phone.required": "رقم الهاتف مطلوب.",

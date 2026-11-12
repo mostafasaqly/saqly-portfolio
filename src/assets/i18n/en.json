@@ -221,8 +221,9 @@
 
   "contact.validation.email.required": "Email is required.",
   "contact.validation.email.invalid": "Please enter a valid email address.",
-  "contact.validation.email.disposable": "Temporary or disposable email addresses are not allowed.",
-  "individual.validation.email.disposable": "Temporary or disposable email addresses are not allowed.",
+  "contact.validation.email.disposable": "Please use your real, permanent email address.",
+  "contact.validation.suspicious": "Please enter real text, not random characters.",
+  "individual.validation.email.disposable": "Please use your real, permanent email address.",
   "contact.validation.email.maxlength": "Email must be at most 120 characters.",
 
   "contact.validation.phone.required": "Phone number is required.",
