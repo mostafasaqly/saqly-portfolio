@@ -11,6 +11,7 @@ import { finalize } from 'rxjs';
 import { SectionContainerComponent } from '../../../../shared/components/section-container/section-container.component';
 import { SectionHeadingComponent } from '../../../../shared/components/section-heading/section-heading.component';
 import { TPipe } from '../../../../shared/pipes/t.pipe';
+import { noDisposableEmailValidator } from '../../../../shared/validators/no-disposable-email.validator';
 import { TranslationService } from '../../../../core/services/translation.service';
 import { PORTFOLIO_CONFIG } from '../../../../core/config/portfolio.config';
 import {
@@ -78,6 +79,7 @@ export class ContactSectionComponent {
     email: this.fb.control('', [
       Validators.required,
       Validators.email,
+      noDisposableEmailValidator,
       Validators.maxLength(120),
     ]),
     phone: this.fb.control('', [

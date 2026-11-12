@@ -15,6 +15,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { finalize, timeout } from 'rxjs';
 
 import { TPipe } from '../../../shared/pipes/t.pipe';
+import { noDisposableEmailValidator } from '../../../shared/validators/no-disposable-email.validator';
 import { TranslationService } from '../../../core/services/translation.service';
 import { environment } from '../../../../environments/environment';
 
@@ -268,6 +269,7 @@ export class IndividualTrainingPageComponent {
     email: this.fb.control('', [
       Validators.required,
       Validators.email,
+      noDisposableEmailValidator,
       Validators.maxLength(120),
     ]),
     phone: this.fb.control('', [

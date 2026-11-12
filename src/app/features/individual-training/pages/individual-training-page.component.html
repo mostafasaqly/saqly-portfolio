@@ -231,6 +231,7 @@
                 <p class="form-field__error">
                   @if (emailControl.errors?.['required']) { {{ 'individual.validation.email.required' | t }} }
                   @else if (emailControl.errors?.['email']) { {{ 'individual.validation.email.invalid' | t }} }
+                  @else if (emailControl.errors?.['disposableEmail']) { {{ 'individual.validation.email.disposable' | t }} }
                 </p>
               }
               <p class="form-field__hint">{{ 'individual.field.email.hint' | t }}</p>

@@ -88,6 +88,8 @@
                     {{ 'contact.validation.email.required' | t }}
                   } @else if (emailControl.errors?.['email']) {
                     {{ 'contact.validation.email.invalid' | t }}
+                  } @else if (emailControl.errors?.['disposableEmail']) {
+                    {{ 'contact.validation.email.disposable' | t }}
                   } @else if (emailControl.errors?.['maxlength']) {
                     {{ 'contact.validation.email.maxlength' | t }}
                   }
